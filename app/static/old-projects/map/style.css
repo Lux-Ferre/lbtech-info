@@ -1,0 +1,105 @@
+body {
+	background-color:#001333;
+}
+canvas { 
+	position:absolute;
+    display:inline-block;
+	background-color:black;
+	box-sizing: border-box;
+	border: 2px solid #666;
+}
+#headDiv {
+	background-color:#00368e;
+	width: 100%;
+	height: 100px;
+}
+#logos {
+	width: 50%;
+	margin: 0 auto;
+}
+#mapDiv {
+	position: absolute;
+}
+#mapGUI {
+	position: relative;
+	top: 10px;
+}
+#seedLinks {
+	position: absolute;
+	top: 720px;
+	background: #222;
+	padding: 2px 2px;
+	box-sizing: border-box;
+	border: 2px solid #666;
+}
+#colourPicker {
+	position:absolute;
+	left: 835px;
+	display:inline-block;
+	background: #444444;
+	padding: 2px 2px;
+	box-sizing: border-box;
+	border: 2px solid #666;
+	height: 714px;
+}
+#spacer {
+	position: absolute;
+	top: 800px;
+}
+#seedDiv {
+	position: absolute;
+	top: 750px;
+}
+#rgbColour {
+	position: absolute;
+	left: 925px;
+	top: 150px;
+	background: #444444;
+	padding: 2px 2px;
+	box-sizing: border-box;
+	border: 2px solid #666;
+	height: 275px;
+}
+#colourShow {
+	width:100px;
+	height:100px;
+	background:#000000;
+	position:relative;
+	left: 35px;
+}
+#clickTypeSel {
+	position: absolute;
+	left: 970px;
+	top: 430px;
+	background: #444444;
+	width: 100px;
+	padding: 2px 2px;
+	color:white;
+	box-sizing: border-box;
+	border: 2px solid #666;
+	height: 75px;
+}
+.seedBox {
+	width: 830px;
+	height: 26px;
+	padding: 2px 2px;
+	box-sizing: border-box;
+	border: 2px solid #444;
+	background-color: #f8f8f8;
+	font-size: 16px;
+	resize: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 200px; /* Full width */
+    height: 25px; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	color: white;
+}

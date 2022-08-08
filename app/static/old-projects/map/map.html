@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Strategy Planning Map</title>
+		<script language="javascript" src="lz-string.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+		<div id="headDiv">
+			<div id="logos">
+				<a href="https://play.google.com/store/apps/details?id=com.phantorama.idlekingdoms" target="_blank"><img src="./Images/Hex-Transparent.png" alt="IK Logo" height="100"></a>
+				<img src="./Images/USPLogo.png" alt="USP Logo" width="500">
+			</div>
+		</div>
+		<div id="mapGUI">
+			<div id="mapDiv">
+				<canvas id="hexmap" width="850" height="710"></canvas>
+				<script src="hexagons.js"></script>
+				<div id="colourPicker">
+					<a href="javascript:void(0);" onclick="setColour('#FFFFFF');"><img src="./Images/Hex-Wht.png" alt="White Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#000000');"><img src="./Images/Hex-Blk.png" alt="Black Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#42F4A1');"><img src="./Images/Hex-LGn.png" alt="Light Green Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#138e55');"><img src="./Images/Hex-Grn.png" alt="Green Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#9da09f');"><img src="./Images/Hex-Gry.png" alt="Grey Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#4eade5');"><img src="./Images/Hex-Blu.png" alt="Blue Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#7C4d0E');"><img src="./Images/Hex-Brn.png" alt="Brown Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#870909');"><img src="./Images/Hex-Red.png" alt="Red Tile" height="80" width="75"></a>
+				</div>
+				<div id="rgbColour">
+					<p style="color:#FFFFFF;">Enter numbers from 0-255</p>
+					<input type="text" name="redVal" id="redIn" placeholder="000" onchange="setRGB()"><br>
+					<input type="text" name="greenVal" id="greenIn" placeholder="000" onchange="setRGB()"><br>
+					<input type="text" name="blueVal" id="blueIn" placeholder="000" onchange="setRGB()"><br /><br />
+					<div id="colourShow"></div>
+				</div>
+				<div id="clickTypeSel">
+					<input type="radio" name="clickType"> Colour<br>
+					<input type="radio" name="clickType" id="typeLabel"> Label<br>
+					<input type="radio" name="clickType" id="typeSelect"> Select<br>
+				</div>
+			</div>
+			<div id="seedLinks">
+				<a style="display:inline" id="mapReseter" href="javascript:void(0);" onclick="resetMap();">Reset Map</a>
+				<a style="display:inline" id="convertMap" href="javascript:void(0);" onclick="exportFull();">Export Map & Labels</a>
+				<a style="display:inline" id="convertMap" href="javascript:void(0);" onclick="importFull();">Import Map & Labels</a>
+			</div>
+			<div id="spacer">.</div>
+			<div id="hiddenColour" style="display: none;">'#FFFFFF'</div>
+			<div id="seedDiv"><textarea name="seedOut" id="seedOut" class="seedBox"></textarea></div>
+		</div>
+		<div id="labModal" class="modal">
+			<div id="labModText"></div>
+		</div>
+    </body>
+</html>
+
+<script>
+
+	
+	function setRGB() {
+		var r = makeLength(Number(document.getElementById("redIn").value).toString(16));
+		var g = makeLength(Number(document.getElementById("greenIn").value).toString(16));
+		var b = makeLength(Number(document.getElementById("blueIn").value).toString(16));
+		
+		var c="#"+r+g+b;
+		document.getElementById("hiddenColour").innerHTML = c;
+		document.getElementById("colourShow").style.background = c;
+	}
+	
+	function makeLength(inVar){
+		if(inVar.length==1){
+			inVar="0"+inVar;}
+		return inVar;
+	}
+	
+	function setColour(c){
+		document.getElementById("colourShow").style.background = c;
+		document.getElementById("hiddenColour").innerHTML = c;}
+		
+	function resetMap(){
+		var i,
+			j,
+			mapArray=new Array(),
+			labelArray=new Array();
+		for(i = 0; i < 39; ++i) {
+			mapArray[i]=new Array();
+			labelArray[i]=new Array();
+			for(j = 0; j < 39; ++j) {
+				mapArray[i][j]="#FFFFFF";
+				labelArray[i][j]="";
+			}
+		}
+		localStorage.setItem("mapMatrix", JSON.stringify(mapArray));
+		localStorage.setItem("mapLabels", JSON.stringify(labelArray));
+		location.reload();
+	}
+
+	function exportSeed() {
+		outVar = btoa(localStorage.getItem("mapMatrix"));
+		document.getElementById("seedOut").innerHTML = outVar;
+	}
+
+	function importSeed() {
+		inVar=atob(prompt("Enter your seed:"));
+		localStorage.setItem("mapMatrix", inVar);
+		location.reload();
+	}
+
+	function exportFull() {
+		gsMap = localStorage.getItem("mapMatrix");
+		gsLabel=localStorage.getItem("mapLabels");
+		gameState=gsMap+"~"+gsLabel;
+		outVar=LZString.compressToEncodedURIComponent(gameState);
+		document.getElementById("seedOut").innerHTML = outVar;
+	}
+
+	function importFull() {
+		var inVar=prompt("Ener the seed: ");
+		var deComp=LZString.decompressFromEncodedURIComponent(inVar);
+		gameState=deComp.split("~");
+		mapMatrix=gameState[0];
+		labelMatrix=gameState[1];
+				
+		localStorage.setItem("mapMatrix", mapMatrix);
+		localStorage.setItem("mapLabels", labelMatrix);
+		location.reload();
+	}
+</script>
