@@ -3,29 +3,29 @@
     <head>
         <meta charset="utf-8" />
         <title>Strategy Planning Map</title>
-		<script language="javascript" src="lz-string.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+		<script language="javascript" src="{{ url_for('static', filename='old-projects/map/lz-string.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='old-projects/map/style.css') }}">
     </head>
     <body>
 		<div id="headDiv">
 			<div id="logos">
-				<a href="https://play.google.com/store/apps/details?id=com.phantorama.idlekingdoms" target="_blank"><img src="./Images/Hex-Transparent.png" alt="IK Logo" height="100"></a>
-				<img src="./Images/USPLogo.png" alt="USP Logo" width="500">
+				<a href="https://play.google.com/store/apps/details?id=com.phantorama.idlekingdoms" target="_blank"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Transparent.png') }}" alt="IK Logo" height="100"></a>
+				<img src="{{ url_for('static', filename='old-projects/map/Images/USPLogo.png') }}" alt="USP Logo" width="500">
 			</div>
 		</div>
 		<div id="mapGUI">
 			<div id="mapDiv">
 				<canvas id="hexmap" width="850" height="710"></canvas>
-				<script src="hexagons.js"></script>
+				<script src="{{ url_for('static', filename='old-projects/map/hexagons.js') }}"></script>
 				<div id="colourPicker">
-					<a href="javascript:void(0);" onclick="setColour('#FFFFFF');"><img src="./Images/Hex-Wht.png" alt="White Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#000000');"><img src="./Images/Hex-Blk.png" alt="Black Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#42F4A1');"><img src="./Images/Hex-LGn.png" alt="Light Green Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#138e55');"><img src="./Images/Hex-Grn.png" alt="Green Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#9da09f');"><img src="./Images/Hex-Gry.png" alt="Grey Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#4eade5');"><img src="./Images/Hex-Blu.png" alt="Blue Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#7C4d0E');"><img src="./Images/Hex-Brn.png" alt="Brown Tile" height="80" width="75"></a><br>
-					<a href="javascript:void(0);" onclick="setColour('#870909');"><img src="./Images/Hex-Red.png" alt="Red Tile" height="80" width="75"></a>
+					<a href="javascript:void(0);" onclick="setColour('#FFFFFF');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Wht.png') }}" alt="White Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#000000');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Blk.png') }}" alt="Black Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#42F4A1');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-LGn.png') }}" alt="Light Green Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#138e55');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Grn.png') }}" alt="Green Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#9da09f');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Gry.png') }}" alt="Grey Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#4eade5');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Blu.png') }}" alt="Blue Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#7C4d0E');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Brn.png') }}" alt="Brown Tile" height="80" width="75"></a><br>
+					<a href="javascript:void(0);" onclick="setColour('#870909');"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Red.png') }}" alt="Red Tile" height="80" width="75"></a>
 				</div>
 				<div id="rgbColour">
 					<p style="color:#FFFFFF;">Enter numbers from 0-255</p>
@@ -116,7 +116,7 @@
 	}
 
 	function importFull() {
-		var inVar=prompt("Ener the seed: ");
+		var inVar=prompt("Enter the seed: ");
 		var deComp=LZString.decompressFromEncodedURIComponent(inVar);
 		gameState=deComp.split("~");
 		mapMatrix=gameState[0];
