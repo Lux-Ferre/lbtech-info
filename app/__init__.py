@@ -4,4 +4,5 @@ app = Flask(__name__)
 
 from app import views
 
-app.run(debug=False)
+if __name__ == "__main__":
+    app.run(debug=False)
