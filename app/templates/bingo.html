@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='old-projects/bingo/style.css') }}">
+    <title>T90 Bingo</title>
+</head>
+<body>
+	<h1>T90 Bingo</h1>
+	<h6>(Now with added toggles!)</h6>
+	<table>
+	</table>
+	<p>Based on the "P90 Bingo" sheet by Maebbie.</p>
+	<p>Full list of possible tiles can be viewed <a href="{{ url_for('static', filename='old-projects/map/Tile Set.txt') }}">Here.</a> Credits follow the '//'.</p>
+	<p>Cache refresh (ctrl+f5) may be needed to activate toggling.</p>
+</body>
+<script src="{{ url_for('static', filename='old-projects/bingo/script.js') }}"></script>
+</html>

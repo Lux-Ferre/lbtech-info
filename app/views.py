@@ -15,3 +15,13 @@ def map_route():
 @app.route("/map/seeds/")
 def seeds():
     return render_template("seeds.html")
+
+
+@app.route("/bingo")
+def bingo():
+    return render_template("bingo.html")
+
+
+@app.route("/pokemon")
+def pokemon():
+    return render_template("pokemon.html")

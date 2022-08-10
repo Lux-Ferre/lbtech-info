@@ -1,0 +1,26 @@
+body {
+  background-color: #111;
+  color: white;
+}
+
+h1, h6 {
+	text-align: center;
+}
+
+table {
+  border: 5px solid white;
+  table-layout: fixed;
+  width: 500px;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th,
+td {
+  background-color:#222;
+  border: 2px solid white;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
