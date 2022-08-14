@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>LB Technology - Index</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-</head>
-<body>
-    <div>Website migration in progress.</div>
-    <br>
-    <div>If you're looking for the <a href="{{ url_for('map_route') }}">Idle Kingdoms Strategy Planner, you'll find it here.</a></div><br>
-    <div><a href="{{ url_for('bingo') }}">T90 Bingo?</a></div><br>
-    <div><a href="{{ url_for('pokemon') }}">Pokemon Type Randomizer?</a></div><br>
-    <div><a href="https://dh2-batch-mute.anvil.app/">DH2 Batch Muter?</a></div><br>
-    <div><a href="https://word-generator.anvil.app">(mostly pronounceable) Word Generator?</a></div><br>
-    <div>"Two of These People Are Lying" Article Randomizer?</div><br>
-    <div></div><br>
-    <div></div><br>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+			<div>Welcome to Light-Bearer Technologies!</div><br><br>
+			<div>I am actively working on building this site.</div>
+			<div>Currently I am using it mostly as a hub for some of my older projects.</div>
+			<div>You'll find those linked in the "Projects" part of the navbar.</div>
+{% endblock %}

@@ -7,7 +7,7 @@
 /* Dark mode */
 @media(prefers-color-scheme:dark){
 :root{
---body-bg:#000000;
+--body-bg:#333333;
 --body-color:#FFFFFF;
 }
 }

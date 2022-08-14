@@ -25,3 +25,7 @@ def bingo():
 @app.route("/pokemon")
 def pokemon():
     return render_template("pokemon.html")
+
+@app.route("/bootstrap")
+def bootstrap():
+    return render_template("bootstrap.html")
