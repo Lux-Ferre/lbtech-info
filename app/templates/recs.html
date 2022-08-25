@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block title %}Recs{% endblock %}
+{% block content %}
+			<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    		<div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Draw Based Summary</div>
+      				<div class="card-body">
+      						<p class="card-text">Reports & Invoice > Draw-Based Reports > Draw-Based Summary > Today</p> 
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-danger table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Lotto</th>
+      									<td><input class="form-control" id="slipInput1" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">TBall</th>
+      									<td><input class="form-control" id="slipInput2" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">EuroMillions</th>
+      									<td><input class="form-control" id="slipInput3" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Euro Hotpicks</th>
+      									<td><input class="form-control" id="slipInput4" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Hotpicks</th>
+      									<td><input class="form-control" id="slipInput5" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Set for Life</th>
+      									<td><input class="form-control" id="slipInput6" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-danger table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Prizes</th>
+      									<td><input class="form-control" id="slipLottoPrizes" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      				<div class="card-body">
+      						<table class="table table-danger table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Cancels</th>
+      									<td><input class="form-control" id="slipCancels" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      </div>
+    </div>
+    <div class="carousel-item">
+    		<div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Scratchcard Summary</div>
+      				<div class="card-body">
+      						<p class="card-text">Reports & Invoice > Scratchcard Reports > Finiancial Reports > Scratchcard Summary > Today</p> 
+      				</div>
+      				<div class="card-body">
+      						<table class="table table-danger table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Cash Prizes</th>
+      									<td><input class="form-control" id="slipInstantPrizes" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      </div>
+    </div>
+    <div class="carousel-item">
+    		<div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Products Sold Today</div>
+      				<div class="card-body">
+      						<p class="card-text">Products > Product Reports > Products Sold Today</p> 
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-dark table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Online Prizes</th>
+      									<td><input class="form-control" id="officePrizes1" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">EuroMillions Prizes</th>
+      									<td><input class="form-control" id="OfficePrizes2" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Instants Prizes</th>
+      									<td><input class="form-control" id="officePrizes3" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-dark table-striped">
+      							<thead>
+      								<tr>
+      									<th scope="col">Item</th>
+      									<th scope="col">Value</th>
+      								</tr>
+      							</thead>
+      							<tbody>
+      								<tr>
+      									<th scope="row">Lotto</th>
+      									<td><input class="form-control" id="officeInput1" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">TBall</th>
+      									<td><input class="form-control" id="officeInput2" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">EuroMillions</th>
+      									<td><input class="form-control" id="officeInput3" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Euro Hotpicks</th>
+      									<td><input class="form-control" id="officeInput4" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Hotpicks</th>
+      									<td><input class="form-control" id="officeInput5" placeholder="0"></td>
+      								</tr>
+      								<tr>
+      									<th scope="row">Set for Life</th>
+      									<td><input class="form-control" id="officeInput6" placeholder="0"></td>
+      								</tr>
+      							</tbody>
+      					</table>
+      				</div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Output</div>
+      				<div class="card-body text-center">
+      						<button type="button" class="btn btn-primary btn-lg" id="button-calc">Calculate</button>
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-dark">
+      						<tbody>
+      							<tr>
+      								<th scope="row">Pink Slip Sales</th>
+      								<td><input class="form-control" id="slipSalesOut" placeholder="0" readonly></td>
+      							</tr>
+      							<tr>
+      								<th scope="row">Actual Sales</th>
+      								<td><input class="form-control" id="actualSalesOut" placeholder="0" readonly></td>
+      							</tr>
+      						</tbody>
+      					</table>
+      				</div>
+      				<div class="card-body">
+      					<table class="table table-dark">
+      						<tbody>
+      							<tr>
+      								<th scope="row">Pink Slip Prizes</th>
+      								<td><input class="form-control" id="slipPrizeOut" placeholder="0" readonly></td>
+      							</tr>
+      							<tr>
+      								<th scope="row">Actual Prizes</th>
+      								<td><input class="form-control" id="actualPrizeOut" placeholder="0" readonly></td>
+      							</tr>
+      						</tbody>
+      					</table>
+      				</div>
+      				
+      </div>
+    </div>
+    
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endblock %}
+
+<script>
+		document.getElementById("button-calc").onclick = function () {
+        calcVals()
+    };
+    function calcVals() {
+        document.getElementByID("slipSalesOut").value = "42";
+    }
+</script>

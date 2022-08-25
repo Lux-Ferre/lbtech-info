@@ -26,6 +26,17 @@ def bingo():
 def pokemon():
     return render_template("pokemon.html")
 
+
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
+
+
+@app.route("/projects/recs")
+def recs():
+    return render_template("recs.html")

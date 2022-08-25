@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner mh-100">
+    <div class="carousel-item active">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Idle Kingdoms Map</div>
+      				<img src="{{ url_for('static', filename='projects/temp.jpg') }}" class="d-block w-100" alt="...">
+      				<div class="card-body text-center">
+      						<p class="card-text">An interactive map built for planning strategies in the mobile game Idle Kingdoms.</p> 
+      						<p class="card-text">An old project, this has its own CSS and is not fully integrated into the rest of the site.</p>
+      						<a href="{{ url_for('map_route') }}" class="card-link">Link to project</a>
+      				</div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">T90</div>
+      				<div class="card-body">
+      						<p class="card-text">T902</p> 
+      				</div>
+      </div>
+    </div>
+<div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">Poke</div>
+      				<div class="card-body">
+      						<p class="card-text">poke2</p> 
+      				</div>
+      </div>
+    </div>
+<div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">dh2</div>
+      				<div class="card-body">
+      						<p class="card-text">dh22</p> 
+      				</div>
+      </div>
+    </div>
+<div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">words</div>
+      				<div class="card-body">
+      						<p class="card-text">words2</p> 
+      				</div>
+      </div>
+    </div>
+<div class="carousel-item">
+      <div class="card card-body w-100 text-bg-dark">
+      				<div class="card-header">2ppl</div>
+      				<div class="card-body">
+      						<p class="card-text">2ppl2</p> 
+      				</div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endblock %}
