@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Recs{% endblock %}
 {% block content %}
-			<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
     		<div class="card card-body w-100 text-bg-dark">
@@ -124,7 +124,7 @@
       								</tr>
       								<tr>
       									<th scope="row">EuroMillions Prizes</th>
-      									<td><input class="form-control" id="OfficePrizes2" placeholder="0"></td>
+      									<td><input class="form-control" id="officePrizes2" placeholder="0"></td>
       								</tr>
       								<tr>
       									<th scope="row">Instants Prizes</th>
@@ -175,7 +175,7 @@
       <div class="card card-body w-100 text-bg-dark">
       				<div class="card-header">Output</div>
       				<div class="card-body text-center">
-      						<button type="button" class="btn btn-primary btn-lg" id="button-calc">Calculate</button>
+      						<button type="button" class="btn btn-primary btn-lg" onclick="calcVals()">Calculate</button>
       				</div>
       				<div class="card-body">
       					<table class="table table-dark">
@@ -217,14 +217,48 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+  </div>
 </div>
-{% endblock %}
 
 <script>
-		document.getElementById("button-calc").onclick = function () {
-        calcVals()
-    };
-    function calcVals() {
-        document.getElementByID("slipSalesOut").value = "42";
+        function calcVals() {
+        slipSaleTotal = 0
+        officeSaleTotal = 0
+        officePrizeTotal = 0
+    	for (let i = 1; i < 7; i++) {
+                elementId = "slipInput" + i
+                elementValue = document.getElementById(elementId).value
+                if (elementValue == "") {elementValue = "0"}
+                slipSaleTotal += parseFloat(elementValue)
+        }
+
+        cancels = document.getElementById("slipCancels").value
+        if (cancels == "") {cancels = "0"}
+        slipSaleTotal -= parseFloat(cancels)
+        document.getElementById("slipSalesOut").value = slipSaleTotal
+
+        lottoPrizes = document.getElementById("slipLottoPrizes").value
+                if (lottoPrizes === "") {lottoPrizes = "0"}
+        instantPrizes = document.getElementById("slipInstantPrizes").value
+                if (instantPrizes == "") {instantPrizes = "0"}
+        slipPrizeTotal = parseFloat(lottoPrizes) + parseFloat(instantPrizes)
+        document.getElementById("slipPrizeOut").value = slipPrizeTotal
+
+        for (let i = 1; i < 7; i++) {
+                elementId = "officeInput" + i
+                elementValue = document.getElementById(elementId).value
+                if (elementValue == "") {elementValue = "0"}
+                officeSaleTotal += parseFloat(elementValue)
+        }
+        document.getElementById("actualSalesOut").value = officeSaleTotal
+
+        for (let i = 1; i < 4; i++) {
+                elementId = "officePrizes" + i
+                elementValue = document.getElementById(elementId).value
+                if (elementValue == "") {elementValue = "0"}
+                officePrizeTotal += parseFloat(elementValue)
+        }
+        document.getElementById("actualPrizeOut").value = officePrizeTotal
     }
 </script>
+{% endblock %}
