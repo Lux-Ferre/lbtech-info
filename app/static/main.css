@@ -18,7 +18,12 @@ body {
    color: var(--body-color);
 }
 */
+:root{
+--body-bg:#333333;
+--body-color:#FFFFFF;
+}
+
 body {
-   background: var(#333333);
-   color: var(#FFFFFF);
+   background: var(--body-bg);
+   color: var(--body-color);
 }
