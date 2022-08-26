@@ -40,3 +40,8 @@ def projects():
 @app.route("/projects/recs")
 def recs():
     return render_template("recs.html")
+
+
+@app.route("/projects/two")
+def two_people():
+    return render_template("two.html")
