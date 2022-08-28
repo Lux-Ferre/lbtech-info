@@ -45,3 +45,7 @@ def recs():
 @app.route("/projects/two")
 def two_people():
     return render_template("two.html")
+
+@app.route("/projects/git-projects")
+def git_projects():
+    return render_template("git-projects.html")
