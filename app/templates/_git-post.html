@@ -1,0 +1,13 @@
+<div class="accordion-item">
+    <h2 class="accordion-header bg-dark" id="heading{{ post.number }}">
+      <button class="accordion-button bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ post.number }}" aria-expanded="true" aria-controls="collapse{{ post.number }}">
+        {{ post.title }}
+      </button>
+    </h2>
+    <div id="collapse{{ post.number }}" class="accordion-collapse collapse" aria-labelledby="heading{{ post.number }}" data-bs-parent="#gitProjectsAccordion">
+      <div class="accordion-body text-bg-dark">
+        <p>{{ post.body }}</p>
+        <p><a href="{{ post.link }}">Link</a></p>
+      </div>
+    </div>
+</div>
