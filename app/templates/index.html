@@ -1,8 +1,22 @@
 {% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='assets/solar_system/styles.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}Index{% endblock %}
 {% block content %}
-			<div>Welcome to Light-Bearer Technologies!</div><br><br>
-			<div>I am actively working on building this site.</div>
-			<div>Currently I am using it mostly as a hub for some of my older projects.</div>
-			<div>You'll find those linked in the "Projects" part of the navbar.</div>
+<div class="row w-100">
+	<div class="col-6">
+		<div>Welcome to Light-Bearer Technologies!</div><br><br>
+		<div>I am actively working on building this site.</div>
+		<div>Currently I am using it mostly as a hub for some of my older projects.</div>
+		<div>You'll find those linked in the "Projects" part of the navbar.</div>
+	</div>
+	<div class="col-6">
+		{% include '_solar_system.html' %}
+	</div>
+</div>
+
 {% endblock %}

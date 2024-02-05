@@ -1,0 +1,155 @@
+#sun {
+  width: 15%;
+  height: 15%;
+  border-radius: 50%;
+  background-color: #f5d442;
+  box-shadow: 0 0 20px yellow;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#mercury {
+  background-color: #D3D3D3;
+  width: 4%;
+  height: 4%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.ring {
+  border-radius: 50%;
+  border-color: RGBA(255, 255, 255, 0.3);
+  border-width: 1px;
+  border-style: solid;
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#mercuryRing {
+  height: 20%;
+  width: 20%;
+  animation-duration: 0.9s;
+}
+
+#venusRing {
+  height: 25%;
+  width: 25%;
+  animation-duration: 2.25s;
+}
+
+.planet {
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: translate(0, -50%);
+}
+
+#venus {
+  height: 5%;
+  width: 5%;
+  background-color: #e07a57;
+}
+
+#earth {
+  height: 5%;
+  width: 5%;
+  background-color: blue;
+}
+
+#earthRing {
+  height: 30%;
+  width: 30%;
+  animation-duration: 3.65s;
+}
+
+#marsRing {
+  height: 35%;
+  width: 35%;
+  animation-duration: 6.87s;
+}
+
+#mars {
+  height: 4.5%;
+  width: 4.5%;
+  background-color: darkred;
+}
+
+#jupiterRing {
+  height: 45%;
+  width: 45%;
+  animation-duration: 44s;
+}
+
+#jupiter {
+  height: 19%;
+  width: 19%;
+  background-color: #f8c471;
+}
+
+#saturnRing {
+  height: 60%;
+  width: 60%;
+  animation-duration: 108s;
+}
+
+#saturn {
+  height: 8%;
+  width: 8%;
+  background-color: sandybrown;
+}
+
+#uranusRing {
+  height: 70%;
+  width: 70%;
+  animation-duration: 307s;
+}
+
+#uranus {
+  height: 6%;
+  width: 6%;
+  background-color: cornflowerblue;
+}
+
+#neptuneRing {
+  height: 80%;
+  width: 80%;
+  animation-duration: 602s;
+}
+
+#neptune {
+  height: 4.5%;
+  width: 4.5%;
+  background-color: cadetblue;
+}
+
+#plutoRing {
+  height: 95%;
+  width: 95%;
+  animation-duration: 905s;
+}
+
+#pluto {
+  height: 0.5%;
+  width: 0.5%;
+  background-color: lightskyblue;
+}
+
+#jupiterEye {
+  border-radius: 50%;
+  background-color: RGBA(255, 0, 0, 0.4);
+  box-shadow: 0 0 5px red;
+  height: 15%;
+  width: 20%;
+  position: relative;
+  left: 60%;
+  top: 60%;
+}
+
