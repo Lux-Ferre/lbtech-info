@@ -145,7 +145,7 @@
 			<div class="card card-body w-100">
 				<div class="card-header">Output</div>
 				<div class="card-body text-center">
-					<button type="button" class="btn btn-primary btn-lg" onclick="calcVals()">Calculate</button>
+					<button type="button" class="btn btn-primary btn-lg" onclick="recs_functions.calcVals()">Calculate</button>
 				</div>
 				<div class="card-body">
 					<table class="table">
@@ -191,66 +191,5 @@
 	</div>
 </div>
 
-<script>
-	function getValue(elementName){
-		let elementValue = document.getElementById(elementName).value
-
-		if (elementValue === ""){
-			elementValue = 0
-		} else {
-			elementValue = parseFloat(elementValue)
-		}
-		return elementValue
-	}
-
-
-	function calcVals() {
-		let slipSaleTotal = 0
-		let officeSaleTotal = 0
-		let officePrizeTotal = 0
-
-		for (let i = 1; i < 7; i++) {
-			const elementId = "slipInput" + i
-			const elementValue = getValue(elementId)
-			slipSaleTotal += elementValue
-		}
-
-		const cancels = getValue("slipCancels")
-		slipSaleTotal -= cancels
-
-		document.getElementById("slipSalesOut").value = slipSaleTotal
-
-		const lottoPrizes = getValue("slipLottoPrizes")
-
-		let instantPrizes = getValue("slipInstantPrizes")
-
-		const slipPrizeTotal = lottoPrizes + instantPrizes
-
-		document.getElementById("slipPrizeOut").value = slipPrizeTotal
-
-		for (let i = 1; i < 7; i++) {
-			const elementId = "officeInput" + i
-			const elementValue = getValue(elementId)
-
-			officeSaleTotal += elementValue
-		}
-
-		document.getElementById("actualSalesOut").value = officeSaleTotal
-
-		for (let i = 1; i < 4; i++) {
-			const elementId = "officePrizes" + i
-			const elementValue = getValue(elementId)
-
-			officePrizeTotal += elementValue
-		}
-
-		document.getElementById("actualPrizeOut").value = officePrizeTotal
-
-		const saleVariance = officeSaleTotal - slipSaleTotal
-		document.getElementById("saleVariance").value = saleVariance
-
-		const prizeVariance = officePrizeTotal - slipPrizeTotal
-		document.getElementById("prizeVariance").value = prizeVariance
-	}
-</script>
+<script src="{{ url_for('static', filename='projects/recs/recs_script.js') }}"></script>
 {% endblock %}
