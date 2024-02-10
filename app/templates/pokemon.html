@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<link rel="stylesheet" href="{{ url_for('static', filename='old-projects/pokemon/style.css') }}">
-    <title>Randomly Generated Pokemon</title>
-</head>
-<body>
-	<h1>Randomly Generated Pokemon</h1>
-	<table>
-		<tr>
-			<td id="prType"></td>
-			<td id="seType"></td>
-		</tr>
-		<tr>
-			<td id="animal" colspan="2"></td>
-		</tr>
-	</table>
-	<div id="buttonDiv">
-		<button type="button" onclick="reroll()">Roll! That! Pokemon!</button>
-	</div>
-</body>
-<script src="{{ url_for('static', filename='old-projects/pokemon/script.js') }}"></script>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="{{ url_for('static', filename='old-projects/pokemon/style.css') }}">
+		<title>Randomly Generated Pokemon</title>
+	</head>
+	<body>
+		<h1>Randomly Generated Pokemon</h1>
+		<table>
+			<tr>
+				<td id="prType"></td>
+				<td id="seType"></td>
+			</tr>
+			<tr>
+				<td id="animal" colspan="2"></td>
+			</tr>
+		</table>
+		<div id="buttonDiv">
+			<button type="button" onclick="reroll()">Roll! That! Pokemon!</button>
+		</div>
+	</body>
+	<script src="{{ url_for('static', filename='old-projects/pokemon/script.js') }}"></script>
 </html>

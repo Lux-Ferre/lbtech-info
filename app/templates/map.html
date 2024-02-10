@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Strategy Planning Map</title>
+	<head>
+		<meta charset="utf-8" />
+		<title>Strategy Planning Map</title>
 		<script language="javascript" src="{{ url_for('static', filename='old-projects/map/lz-string.js') }}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='old-projects/map/style.css') }}">
-    </head>
-    <body>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='old-projects/map/style.css') }}">
+	</head>
+	<body>
 		<div id="headDiv">
 			<div id="logos">
 				<a href="https://play.google.com/store/apps/details?id=com.phantorama.idlekingdoms" target="_blank"><img src="{{ url_for('static', filename='old-projects/map//Images/Hex-Transparent.png') }}" alt="IK Logo" height="100"></a>
@@ -52,13 +52,11 @@
 		<div id="labModal" class="modal">
 			<div id="labModText"></div>
 		</div>
-    </body>
+	</body>
 </html>
 
 <script>
-
-	
-	function setRGB() {
+	function setRGB(){
 		var r = makeLength(Number(document.getElementById("redIn").value).toString(16));
 		var g = makeLength(Number(document.getElementById("greenIn").value).toString(16));
 		var b = makeLength(Number(document.getElementById("blueIn").value).toString(16));
@@ -81,14 +79,14 @@
 	function resetMap(){
 		var i,
 			j,
-			mapArray=new Array(),
-			labelArray=new Array();
+			mapArray = new Array(),
+			labelArray = new Array();
 		for(i = 0; i < 39; ++i) {
-			mapArray[i]=new Array();
-			labelArray[i]=new Array();
+			mapArray[i] = new Array();
+			labelArray[i] = new Array();
 			for(j = 0; j < 39; ++j) {
-				mapArray[i][j]="#FFFFFF";
-				labelArray[i][j]="";
+				mapArray[i][j] = "#FFFFFF";
+				labelArray[i][j] = "";
 			}
 		}
 		localStorage.setItem("mapMatrix", JSON.stringify(mapArray));
@@ -102,25 +100,25 @@
 	}
 
 	function importSeed() {
-		inVar=atob(prompt("Enter your seed:"));
+		inVar = atob(prompt("Enter your seed:"));
 		localStorage.setItem("mapMatrix", inVar);
 		location.reload();
 	}
 
 	function exportFull() {
 		gsMap = localStorage.getItem("mapMatrix");
-		gsLabel=localStorage.getItem("mapLabels");
-		gameState=gsMap+"~"+gsLabel;
-		outVar=LZString.compressToEncodedURIComponent(gameState);
+		gsLabel = localStorage.getItem("mapLabels");
+		gameState = gsMap + "~" + gsLabel;
+		outVar = LZString.compressToEncodedURIComponent(gameState);
 		document.getElementById("seedOut").innerHTML = outVar;
 	}
 
 	function importFull() {
-		var inVar=prompt("Enter the seed: ");
-		var deComp=LZString.decompressFromEncodedURIComponent(inVar);
-		gameState=deComp.split("~");
-		mapMatrix=gameState[0];
-		labelMatrix=gameState[1];
+		var inVar = prompt("Enter the seed: ");
+		var deComp = LZString.decompressFromEncodedURIComponent(inVar);
+		gameState = deComp.split("~");
+		mapMatrix = gameState[0];
+		labelMatrix = gameState[1];
 				
 		localStorage.setItem("mapMatrix", mapMatrix);
 		localStorage.setItem("mapLabels", labelMatrix);
