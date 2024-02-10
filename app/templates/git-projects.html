@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Git Projects{% endblock %}
 {% block content %}
-<div class="accordion bg-dark accordion-flush" id="gitProjectsAccordion">
+<div class="accordion accordion-flush" id="gitProjectsAccordion">
   {% for post in posts %}
   		{% include '_git-post.html' %}
   {% endfor %}

@@ -1,29 +1,18 @@
-/* Colour scheme toggle disabled until Bootstrap5.3
-/* Light mode
+/* Dark mode (Default)*/
 :root{
---body-bg:#FFFFFF;
---body-color:#000000;
+	--body-bg: #333333;
+	--body-color: #FFFFFF;
 }
 
-/* Dark mode
-@media(prefers-color-scheme:dark){
-:root{
---body-bg:#333333;
---body-color:#FFFFFF;
-}
-}
-
-body {
-   background: var(--body-bg);
-   color: var(--body-color);
-}
-*/
-:root{
---body-bg:#333333;
---body-color:#FFFFFF;
+/* Light mode */
+@media(prefers-color-scheme:light){
+	:root{
+		--body-bg: #CCCCCC;
+		--body-color: #000000;
+	}
 }
 
-body {
-   background: var(--body-bg);
-   color: var(--body-color);
+#content {
+	background: var(--body-bg);
+	color: var(--body-color);
 }
