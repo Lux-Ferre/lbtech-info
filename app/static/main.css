@@ -12,7 +12,33 @@
 	}
 }
 
-#content {
+html, body{
+
+}
+
+#baseContainer{
+	height: 100vh;
+	margin: 0;
+}
+
+#content{
 	background: var(--body-bg);
 	color: var(--body-color);
+	min-height: 100%;
+}
+
+#recsCarousel{
+	width: 100%;
+}
+
+#recsCarousel .carousel-inner{
+	height: 100%;
+}
+
+#recsCarousel .carousel-item{
+	height: 100%;
+}
+
+#recsCarousel .card{
+	height: 100%;
 }
