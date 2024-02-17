@@ -12,23 +12,20 @@
 	}
 }
 
-html, body{
-
-}
-
-#baseContainer{
-	height: 100vh;
-	margin: 0;
-}
-
 #content{
 	background: var(--body-bg);
 	color: var(--body-color);
-	min-height: 100%;
+	height: calc(100vh - 56px);
 }
 
 #recsCarousel{
 	width: 100%;
+	font-weight: bold;
+	height: 100%;
+}
+
+#recsCarousel .row{
+	height: 100%;
 }
 
 #recsCarousel .carousel-inner{
@@ -41,4 +38,13 @@ html, body{
 
 #recsCarousel .card{
 	height: 100%;
+}
+
+
+#recsCarousel input{
+	width: 100%;
+}
+
+.recsSpacerRow{
+	padding-top: 2em;
 }
