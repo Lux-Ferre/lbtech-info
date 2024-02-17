@@ -12,9 +12,12 @@
 	}
 }
 
-#content{
+body{
 	background: var(--body-bg);
 	color: var(--body-color);
+}
+
+#content{
 	height: calc(100vh - 56px);
 }
 
