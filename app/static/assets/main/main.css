@@ -61,3 +61,27 @@ body{
 	padding-top: 2em;
 }
 /*Lottery Reconciliations - End*/
+
+
+/* Projects Home - Start */
+#projectsCarousel{
+	width: 100%;
+	height: 100%;
+}
+
+#projectsCarousel .row{
+	height: 100%;
+}
+
+#projectsCarousel .carousel-inner{
+	height: 100%;
+}
+
+#projectsCarousel .carousel-item{
+	height: 100%;
+}
+
+#projectsCarousel .card{
+	height: 100%;
+}
+/*Projects Home - End*/
