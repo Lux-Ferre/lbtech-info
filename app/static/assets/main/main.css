@@ -29,6 +29,10 @@ body{
 	height: 100%;
 }
 
+#recsCarousel .col-3{
+	font-size: calc(2vw);
+}
+
 #recsCarousel .row{
 	height: 100%;
 }
