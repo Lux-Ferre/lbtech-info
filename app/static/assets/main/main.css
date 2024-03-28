@@ -84,4 +84,9 @@ body{
 #projectsCarousel .card{
 	height: 100%;
 }
+
+#projectsCarousel .projectScreenshot{
+	max-height: 100%;
+	width: auto;
+}
 /*Projects Home - End*/
