@@ -7,24 +7,24 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/map")
+@app.route("/projects/archive/map")
 def map_route():
-    return render_template("map.html")
+    return render_template("projects/archive/map.html")
 
 
-@app.route("/map/seeds/")
+@app.route("/projects/archive/map/seeds/")
 def seeds():
-    return render_template("seeds.html")
+    return render_template("projects/archive/seeds.html")
 
 
-@app.route("/bingo")
+@app.route("/projects/archive/bingo")
 def bingo():
-    return render_template("bingo.html")
+    return render_template("projects/archive/bingo.html")
 
 
-@app.route("/pokemon")
+@app.route("/projects/archive/pokemon")
 def pokemon():
-    return render_template("pokemon.html")
+    return render_template("projects/archive/pokemon.html")
 
 
 @app.route("/about")
@@ -34,17 +34,17 @@ def about():
 
 @app.route("/projects")
 def projects():
-    return render_template("projects.html")
+    return render_template("projects/projects.html")
 
 
 @app.route("/projects/recs")
 def recs():
-    return render_template("recs.html")
+    return render_template("projects/recs.html")
 
 
-@app.route("/projects/two")
+@app.route("/projects/external/two")
 def two_people():
-    return render_template("two.html")
+    return render_template("projects/external/two.html")
 
 
 @app.route("/projects/git-projects")
@@ -57,7 +57,7 @@ def git_projects():
         {"number": "Five", "title": "Wall Map", "body": "An experiment in procedural generation and sister project to the galaxy-builder. Uses Perlin noise layers to create a procedural topographical map. CUDA GPU acceleration brought the time down from an hour to seconds per run.", "link":"https://github.com/Lux-Ferre/wall-map"},
         {"number": "Six", "title": "CTC21 - Nautical Wrecks", "body": "Another open source project. Here, I worked with 2 others to find a data source of wrecks off the coasts of Scotland and incorporate the information into WikiData. I took the lead on writing the scraping and cleaning software while my collegues navigated the issue of finding a source with an open license. Together, we looked through the data to decide how to clean it before it was automatically uploaded to WikiData with the help of Ian.", "link":"https://github.com/CodeTheCity/ctc21_nautical_wrecks"}
     ]
-    return render_template("git-projects.html", posts=posts)
+    return render_template("projects/git-projects.html", posts=posts)
     
  
 @app.route("/books")
