@@ -7,7 +7,7 @@
 
 		<!-- Bootstrap (5.3.2) CSS -->
 		<link href="{{ url_for('static', filename='libraries/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
-
+		<!-- Internal stylesheets -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/assets/main/main.css') }}">
 
 		<title>{% block title %}{% endblock %} - LB Tech</title>
@@ -92,7 +92,9 @@
 			{% block scripts %}
 				<!-- Bootstrap (5.3.2) JS with Popper -->
 				<script src="{{ url_for('static', filename='libraries/bootstrap/bootstrap.bundle.min.js') }}"></script>
+				<!-- jQuery 3.7.1 -->
 				<script src="{{ url_for('static', filename='libraries/jQuery/jquery-3.7.1.min.js') }}"></script>
+				<!-- Internal JS files -->
 				<script src="{{ url_for('static', filename='assets/main/colour-mode.js') }}" type="module"></script>
 				<script src="{{ url_for('static', filename='assets/main/main.js') }}" type="module"></script>
 			{% endblock %}
