@@ -17,36 +17,69 @@
 		<div id="baseContainer">
 			{% block navbar %}
 			<nav class="navbar navbar-expand-lg bg-dark">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="{{ url_for('index') }}">LB Technology</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="{{ url_for('projects') }}">Projects Home</a></li>
-									<li><hr class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="{{ url_for('map_route') }}">Idle Kingdoms Planner</a></li>
-									<li><a class="dropdown-item" href="{{ url_for('bingo') }}">T90 Bingo</a></li>
-									<li><a class="dropdown-item" href="{{ url_for('pokemon') }}">Pokemon Type Generator</a></li>
-									<li><a class="dropdown-item" href="https://dh2-batch-mute.anvil.app">DH2 Batch Muter</a></li>
-									<li><a class="dropdown-item" href="https://word-generator.anvil.app">Word Generator</a></li>
-									<li><a class="dropdown-item" href="{{ url_for('recs') }}">Lottery Reconciliations</a></li>
-									<li><a class="dropdown-item" href="{{ url_for('git_projects') }}">Git Projects</a></li>
-									<li><a class="dropdown-item" href="{{ url_for('two_people') }}">Two People Lying</a></li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ url_for('about') }}">About</a>
-							</li>
-						</ul>
-					</div>
+				<a class="navbar-brand" href="{{ url_for('index') }}">LB Technology</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapasedMenu">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapasedMenu">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{ url_for('index') }}">Home</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="https://github.com/Lux-Ferre/Lux-Ferre">Git Hub</a>
+								<div class="dropdown-divider"></div>
+								<div class="dropdown dropend">
+									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Archive</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="{{ url_for('map_route') }}">Idle Kingdoms Planner</a>
+										<a class="dropdown-item" href="{{ url_for('bingo') }}">T90 Bingo</a>
+										<a class="dropdown-item" href="{{ url_for('pokemon') }}">Pokemon Type Generator</a>
+									</div>
+								</div>
+								<div class="dropdown dropend">
+									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">External</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="https://word-generator.anvil.app">Word Generator</a>
+										<a class="dropdown-item" href="{{ url_for('two_people') }}">Two People Lying</a>
+									</div>
+								</div>
+								<div class="dropdown dropend">
+									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Portfolio Projects</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Country Data</a>
+										<a class="dropdown-item" href="#">???</a>
+									</div>
+								</div>
+								<div class="dropdown dropend">
+									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Diamond Hunt</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="https://github.com/Lux-Ferre/LuxBot">LuxBot</a>
+										<a class="dropdown-item" href="https://github.com/Lux-Ferre/idlepixel-websocket-monitor">WS Monitor</a>
+										<a class="dropdown-item" href="https://github.com/Lux-Ferre/IdlePixel-Data">Official API</a>
+										<a class="dropdown-item" href="https://github.com/Lux-Ferre/DHP-Scripts">Userscripts</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="https://github.com/Lux-Ferre/IdlePixel-Bot">LuxBot (archive)</a>
+									</div>
+								</div>
+								<div class="dropdown dropend">
+									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Hardware</a>
+									<div class="dropdown-menu">
+									</div>
+								</div>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="{{ url_for('recs') }}">Lottery Reconciliations</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url_for('about') }}">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact</a>
+						</li>
+					</ul>
 				</div>
 			</nav>
 			{% endblock %}
@@ -61,6 +94,7 @@
 				<script src="{{ url_for('static', filename='libraries/bootstrap/bootstrap.bundle.min.js') }}"></script>
 				<script src="{{ url_for('static', filename='libraries/jQuery/jquery-3.7.1.min.js') }}"></script>
 				<script src="{{ url_for('static', filename='assets/main/colour-mode.js') }}" type="module"></script>
+				<script src="{{ url_for('static', filename='assets/main/main.js') }}" type="module"></script>
 			{% endblock %}
 		</div>
 	</body>
