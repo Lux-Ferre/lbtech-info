@@ -21,6 +21,25 @@ body{
 	height: calc(100vh - 56px);
 }
 
+#lightsOutBackground{
+	background: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -100;
+	width: 100%;
+	height: 100%;
+}
+
+#torch {
+	position: fixed;
+	opacity: 1;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
 
 /* Lottery Reconciliations - Start */
 #recsCarousel{

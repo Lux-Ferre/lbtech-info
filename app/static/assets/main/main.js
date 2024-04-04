@@ -24,3 +24,28 @@
 		});
 	});
 })(bootstrap);
+
+
+// Event listener for home page light switch
+$('#homepageLightSwitch').on('change', function() {
+	const lightIsOn = $(this).is(':checked')
+	const lightsOutBackground = $("#lightsOutBackground")
+	const torch = $("#torch")
+	const bodyElement = $("body")
+	if (lightIsOn){
+		bodyElement.css("color", "var(--body-color)")
+		lightsOutBackground.addClass("d-none")
+		torch.addClass("d-none")
+	} else {
+		bodyElement.css("color", "white")
+		lightsOutBackground.removeClass("d-none")
+		torch.removeClass("d-none")
+	}
+});
+
+$(document).on("mousemove", event => {
+	const torchElement = $("#torch")
+	const { clientX, clientY } = event;
+
+	torchElement.css("background", `radial-gradient(circle at ${clientX}px ${clientY}px, #00000000 10px, #000000ee 200px)`)
+})
