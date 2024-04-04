@@ -21,6 +21,7 @@ body{
 	height: calc(100vh - 56px);
 }
 
+/* Home Page - Start */
 #lightsOutBackground{
 	background: black;
 	position: absolute;
@@ -40,6 +41,7 @@ body{
 	left: 0;
 	pointer-events: none;
 }
+/* Home Page - End */
 
 /* Lottery Reconciliations - Start */
 #recsCarousel{

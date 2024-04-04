@@ -43,6 +43,7 @@ $('#homepageLightSwitch').on('change', function() {
 	}
 });
 
+// Event listener for home page torch effect
 $(document).on("mousemove", event => {
 	const torchElement = $("#torch")
 	const { clientX, clientY } = event;
