@@ -1,17 +1,74 @@
 {% extends "base.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-	<div>Welcome to Light-Bearer Technologies!</div><br><br>
-	<div>I am Chris, a Python developer based in Aberdeen, Scotland.</div>
-	<div>This site is home to my projects.</div>
-	<div>The frontend uses Bootstrap 5, served by Flask on the back-end.</div>
-	<div>I use GitHub as a key part of my site's stack and you can view the repo <a href="https://github.com/Lux-Ferre/lbtech-info">here.</a></div><br><br>
-	<div>Most of my learning has been from
-		<a href="https://pythonaberdeen.github.io">APUG</a>,
-		<a href="https://talkpython.fm">podcasts</a>,
-		<a href="{{ url_for('projects') }}">my projects</a>,
-		or online sources.
+	<div class="row h-100">
+		<div class="col-12 col-md-6" style="border-color: var(--bs-body-color);border-width: 1px;border-style: none solid;">
+			<div class="text-center w-100">
+				<h1>Me</h1>
+			</div>
+			<div style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			<div class="text-center">
+				<p>I am Chris, a full-stack developer based in Aberdeen, Scotland.</p>
+			</div>
+			<div class="text-center">
+				<p>I almost exclusively go by the username <strong>Lux-Ferre</strong> on all platforms.</p>
+			</div>
+			<div class="text-center">
+				<p>Translating my username from Latin to English gives &quot;Light-Bearer&quot; which I chose to represent my work.</p>
+			</div>
+			<div class="text-center">
+				<p style="font-size: 0.75em;">(The name has particular relevance to a long-term secret project I hope to one day be able to showcase front-and-centre.)</p>
+			</div>
+			<div class="d-flex justify-content-center w-100">
+				<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			</div>
+			<div class="d-md-none" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			<div class="d-md-none" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			<div class="text-center">
+				<p>Mostly, I work in the digital space, building and consulting on software.</p>
+			</div>
+			<div class="text-center">
+				<p>I specialise in building Python backends, with largely utilitarian front-ends. Though usually a web deployment set of technologies, I have found this to work great for local applications as well.</p>
+			</div>
+			<div class="d-flex justify-content-center w-100">
+				<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			</div>
+			<div class="text-center">
+				<p>I also have some experience with hardware projects.</p>
+			</div>
+			<div class="text-center">
+				<p>I have designed and made things with small-scale electronics (eg a 4-bit adder) sometimes including the use of microcontrollers.</p>
+			</div>
+			<div class="text-center">
+				<p>Recently, I have used the Solidworks CAD software to create models and 3D printed them.</p>
+			</div>
+			<div class="d-flex justify-content-center w-100">
+				<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			</div>
+			<div class="text-center">
+				<p>Outside of all the making things, I am a gamer, and HEMA martial artist.</p>
+			</div>
+		</div>
+		<div class="col-12 col-md-6" style="border-color: var(--bs-body-color);border-width: 1px;border-style: none solid;">
+			<div class="text-center w-100">
+				<h1>This Site</h1>
+			</div>
+			<div style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			<div class="text-center">
+				<p>This site is both portfolio, and playground. A place to create and share what I am currently working, and have previously worked, on.</p>
+			</div>
+			<div class="d-flex justify-content-center w-100">
+				<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			</div>
+			<div class="text-center">
+				<p>The front-end makes use of Bootstrap for responsiveness; and is served from a Flask back-end.</p>
+			</div>
+			<div class="d-flex justify-content-center w-100">
+				<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
+			</div>
+			<div class="text-center">
+				<p>GitHub is used to facilitate the CI pipeline for the site, and you can view the repo <a href="https://github.com/Lux-Ferre/lbtech-info">here</a>.</p>
+			</div>
+		</div>
 	</div>
-	<div>However, I have found that for some CS principles, reading has been a better source.</div>
-	<div>I will try to list some books I have read, and some thoughts on them, <a href="{{ url_for('books') }}">here.</a></div>
 {% endblock %}
