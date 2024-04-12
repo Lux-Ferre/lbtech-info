@@ -32,11 +32,14 @@ $('#homepageLightSwitch').on('change', function() {
 	const lightsOutBackground = $("#lightsOutBackground")
 	const torch = $("#torch")
 	const bodyElement = $("body")
+	const innerSun = $("#sun")
 	if (lightIsOn){
+        innerSun.attr("style", "")
 		bodyElement.css("color", "var(--body-color)")
 		lightsOutBackground.addClass("d-none")
 		torch.addClass("d-none")
 	} else {
+	    innerSun.css("background-color", "rgba(0,0,0,0)")
 		bodyElement.css("color", "white")
 		lightsOutBackground.removeClass("d-none")
 		torch.removeClass("d-none")
