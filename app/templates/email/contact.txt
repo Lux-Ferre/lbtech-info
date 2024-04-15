@@ -1,0 +1,4 @@
+From: {{ contact }}
+Message:
+
+{{ message }}
