@@ -59,6 +59,11 @@ def recs():
     return render_template("projects/recs.html")
 
 
+@app.route("/projects/sqmusic")
+def sqmusic():
+    return render_template("projects/sq-music.html")
+
+
 @app.route("/projects/external/two")
 def two_people():
     return render_template("projects/external/two.html")
