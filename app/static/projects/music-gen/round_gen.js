@@ -147,6 +147,16 @@ class MusicRoundManager{
 		})
 	}
 	
+	create_download(xml_string){
+		const zipped = fflate.zipSync({
+				"sq_round.sqq": fflate.strToU8(xml_string)
+			}, {
+				level: 6,
+			});
+		const blob = new Blob([zipped], {type: "application/zip"});
+		saveAs(blob, "sqq_round.zip");
+	}
+
 	generate_xml(){
 		const xml_doc = document.implementation.createDocument("", "", null)
 		const round_element = xml_doc.createElement("round")
@@ -209,10 +219,8 @@ class MusicRoundManager{
 		xml_doc.appendChild(round_element)
 		
 		const xml_string = new XMLSerializer().serializeToString(xml_doc)
-		const blob = new Blob([xml_string], {type: "octet/stream"})
-		const url = window.URL.createObjectURL(blob)
 		
-		location.href = url
+		this.create_download(xml_string)
 	}
 }
 
