@@ -131,3 +131,6 @@ dmypy.json
 # IDE stuff
 .idea
 .fleet
+
+# Project Specific
+app/static/projects/music-gen/FileSaver.js
