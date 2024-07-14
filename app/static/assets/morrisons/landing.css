@@ -1,0 +1,22 @@
+h1 {
+    text-decoration: underline;
+    text-align: center;
+}
+
+#card_container {
+    border-width: 3px;
+    border-style: outset;
+}
+
+#card_container > .col-4 {
+    margin: 25px 0;
+}
+
+#card_container > .col-4 > .card {
+    width: 75%;
+    cursor: pointer;
+}
+
+#card_container > .card > .card-img-top{
+    width: 100%;
+}
