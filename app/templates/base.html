@@ -10,14 +10,14 @@
 		<!-- Internal stylesheets -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/assets/main/main.css') }}">
 
-		<title>{% block title %}{% endblock %} - LB Tech</title>
+		<title>LuxFerre.dev - {% block title %}{% endblock %}</title>
 	{% endblock %}
 	</head>
 	<body>
 		<div id="baseContainer">
 			{% block navbar %}
 			<nav class="navbar navbar-expand-lg bg-dark">
-				<a class="navbar-brand" href="{{ url_for('index') }}">LB Technology</a>
+				<a class="navbar-brand" href="{{ url_for('index') }}">LuxFerre.dev</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapasedMenu">
 					<span class="navbar-toggler-icon"></span>
 				</button>
