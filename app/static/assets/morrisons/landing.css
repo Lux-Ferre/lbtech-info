@@ -8,13 +8,15 @@ h1 {
     border-style: outset;
 }
 
-#card_container > .col-4 {
+#card_container > .col {
     margin: 25px 0;
 }
 
-#card_container > .col-4 > .card {
+#card_container > .col > .card {
     width: 75%;
     cursor: pointer;
+    min-width: 250px;
+    max-width: 250px;
 }
 
 #card_container > .card > .card-img-top{
