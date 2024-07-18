@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block head %}
-  {{ super() }}
-  <link href="{{ url_for('static', filename='assets/morrisons/landing.css') }}" rel="stylesheet">
+    {{ super() }}
+    <link href="{{ url_for('static', filename='assets/morrisons/landing.css') }}" rel="stylesheet">
+    <meta id="flask_data" data-recs="{{ url_for('recs') }}"/>
 {% endblock %}
 
 {% block title %}Morrisons{% endblock %}
@@ -56,21 +57,5 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		document.getElementById("mylearning_card").addEventListener("click", event => {
-			window.location.href = "https://morrisons.kallidus-suite.com/external"
-		})
-		document.getElementById("verisae_card").addEventListener("click", event => {
-			window.location.href = "https://eam.verisae.co.uk/"
-		})
-		document.getElementById("recs_card").addEventListener("click", event => {
-			window.location.href = "{{ url_for('recs') }}"
-		})
-        document.getElementById("guide_card").addEventListener("click", event => {
-			window.location.href = "https://tinyurl.com/2241guide"
-		})
-        document.getElementById("barrs_card").addEventListener("click", event => {
-			window.location.href = "https://tinyurl.com/4davs5a4"
-		})
-	</script>
+	<script src="{{ url_for('static', filename='assets/morrisons/landing.js') }}" type="module"></script>
 {% endblock %}
