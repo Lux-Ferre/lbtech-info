@@ -10,6 +10,7 @@ class Barrs{
 			this.products = JSON.parse(mod.barrs_details)
 			for (const idx of Object.keys(this.products)){
 				this.products[idx].qty = 0
+				this.products[idx].price_marked = this.products[idx].price_marked === "TRUE"
 			}
 			this.populate_table()
 		})
@@ -24,11 +25,28 @@ class Barrs{
 
 			$(".cell_description", new_row).text(product.simplified_description)
 			$(".cell_size", new_row).text(product.size)
-			$(".cell_pmp", new_row).text(product.price_marked==="TRUE" ? "✔️":"❌")
-			$(".input_qty", new_row).attr("data-idx", idx)
+			$(".cell_pmp", new_row).text(product.price_marked ? "✔️":"❌")
+			$("tr", new_row).attr("data-idx", idx)
 			table.append(new_row)
 		}
+	}
+
+	update_table_visibility(){
+		const is_not_checked = !($("#input_pmp").is(':checked'))
+		$("tr", "#table_body").each((i, e)=>{
+			const ele = $(e)
+			const idx = $(ele).data("idx")
+			if(is_not_checked || this.products[idx].price_marked){
+				ele.removeClass("d-none")
+			} else {
+				ele.addClass("d-none")
+			}
+		})
 	}
 }
 
 window.barrs = new Barrs()
+
+$("#input_pmp").on("input", e=>{
+	barrs.update_table_visibility()
+})
