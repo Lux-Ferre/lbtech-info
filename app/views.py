@@ -64,6 +64,11 @@ def morrisons_recs():
     return render_template("morrisons/recs.html")
 
 
+@app.route("/morrisons/barrs")
+def morrisons_barrs():
+    return render_template("morrisons/barrs_order.html")
+
+
 @app.route("/projects/sqmusic")
 def sqmusic():
     return render_template("projects/sq-music.html")
