@@ -3,7 +3,7 @@
 {% block head %}
     {{ super() }}
     <link href="{{ url_for('static', filename='assets/morrisons/landing/landing.css') }}" rel="stylesheet">
-    <meta id="flask_data" data-recs="{{ url_for('recs') }}"/>
+    <meta id="flask_data" data-recs="{{ url_for('morrisons_recs') }}"/>
 {% endblock %}
 
 {% block title %}Morrisons{% endblock %}

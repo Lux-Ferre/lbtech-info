@@ -60,7 +60,7 @@ def morrisons_landing():
 
 
 @app.route("/morrisons/recs")
-def recs():
+def morrisons_recs():
     return render_template("morrisons/recs.html")
 
 
