@@ -56,12 +56,12 @@ def projects():
 
 @app.route("/morrisons")
 def morrisons_landing():
-    return render_template("morrisons_landing.html")
+    return render_template("morrisons/morrisons_landing.html")
 
 
 @app.route("/morrisons/recs")
 def recs():
-    return render_template("projects/recs.html")
+    return render_template("morrisons/recs.html")
 
 
 @app.route("/projects/sqmusic")

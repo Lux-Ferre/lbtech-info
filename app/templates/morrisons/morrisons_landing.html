@@ -2,7 +2,7 @@
 
 {% block head %}
     {{ super() }}
-    <link href="{{ url_for('static', filename='assets/morrisons/landing.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/morrisons/landing/landing.css') }}" rel="stylesheet">
     <meta id="flask_data" data-recs="{{ url_for('recs') }}"/>
 {% endblock %}
 
@@ -17,7 +17,7 @@
 		<div id="card_container" class="row d-flex justify-content-center">
 			<div class="col d-flex justify-content-center">
 				<div id="mylearning_card" class="card bg-success-subtle border-success text-center">
-                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/mylearning.png') }}">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/mylearning.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">My Learning</h4>
 					</div>
@@ -25,7 +25,7 @@
 			</div>
 			<div class="col d-flex justify-content-center">
 				<div id="verisae_card" class="card bg-danger-subtle border-danger text-center">
-                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/verisae.png') }}">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/verisae.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">Verisae</h4>
 					</div>
@@ -33,7 +33,7 @@
 			</div>
             <div class="col d-flex justify-content-center">
 				<div id="recs_card" class="card bg-dark-subtle border-secondary text-center">
-                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/recs.png') }}">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/recs.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">Lottery Recs Calc</h4>
 					</div>
@@ -41,7 +41,7 @@
 			</div>
             <div class="col d-flex justify-content-center">
 				<div id="guide_card" class="card bg-info-subtle border-info text-center">
-                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/guide.png') }}">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/guide.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">Guide Book</h4>
 					</div>
@@ -49,7 +49,7 @@
 			</div>
             <div class="col d-flex justify-content-center">
 				<div id="barrs_card" class="card bg-danger-subtle border-danger text-center">
-                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/barrs.png') }}">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/barrs.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">Barrs Order Sheet</h4>
 					</div>
@@ -69,5 +69,5 @@
             </div>
         </div>
     </div>
-	<script src="{{ url_for('static', filename='assets/morrisons/landing.js') }}" type="module"></script>
+	<script src="{{ url_for('static', filename='assets/morrisons/landing/landing.js') }}" type="module"></script>
 {% endblock %}
