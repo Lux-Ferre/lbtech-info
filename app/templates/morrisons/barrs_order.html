@@ -51,6 +51,25 @@
         </div>
     </div>
 </div>
+<div id="save_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-check"><input id="save_jwf_code" class="form-check-input" type="checkbox" data-col="jwf_code" checked /><label class="form-check-label" for="save_jwf_code" style="margin-left: 5px;">JWF Code</label></div>
+                <div class="form-check"><input id="save_m_code" class="form-check-input" type="checkbox" data-col="m_code" /><label class="form-check-label" for="save_m_code" style="margin-left: 5px;">M Code</label></div>
+                <div class="form-check"><input id="save_ean" class="form-check-input" type="checkbox" data-col="ean" /><label class="form-check-label" for="save_ean" style="margin-left: 5px;">EAN</label></div>
+                <div class="form-check"><input id="save_jwf_description" class="form-check-input" type="checkbox" data-col="jwf_description" checked /><label class="form-check-label" for="save_jwf_description" style="margin-left: 5px;">JWF Description</label></div>
+                <div class="form-check"><input id="save_simplified_description" class="form-check-input" type="checkbox" data-col="simplified_description" /><label class="form-check-label" for="save_simplified_description" style="margin-left: 5px;">Simplified Description</label></div>
+                <div class="form-check"><input id="save_category" class="form-check-input" type="checkbox" data-col="category" /><label class="form-check-label" for="save_category" style="margin-left: 5px;">Category</label></div>
+                <div class="form-check"><input id="save_price_marked" class="form-check-input" type="checkbox" data-col="price_marked" /><label class="form-check-label" for="save_price_marked" style="margin-left: 5px;">Price Marked</label></div>
+                <div class="form-check"><input id="save_pmp_price" class="form-check-input" type="checkbox" data-col="pmp_price" /><label class="form-check-label" for="save_pmp_price" style="margin-left: 5px;">PMP Price</label></div>
+                <div class="form-check"><input id="save_size" class="form-check-input" type="checkbox" data-col="size" /><label class="form-check-label" for="save_size" style="margin-left: 5px;">Size</label></div>
+                <div class="form-check"><input id="save_qty" class="form-check-input" type="checkbox" data-col="qty" checked /><label class="form-check-label" for="save_qty" style="margin-left: 5px;">Quantity</label></div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-light" type="button" data-bs-dismiss="modal">Cancel</button><button id="save_save" class="btn btn-outline-primary" type="button">Save</button></div>
+        </div>
+    </div>
+</div>
 <template id="row_template">
     <tr>
         <td class="cell_description"></td>

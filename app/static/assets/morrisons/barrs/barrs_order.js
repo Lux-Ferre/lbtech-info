@@ -61,7 +61,16 @@ class Barrs{
 	}
 
 	create_csv(){
-		const headers = ["jwf_code", "jwf_description", "qty"]
+		const headers = []
+		$(".form-check-input", $("#save_modal")).each((i, e)=>{
+			const ele = $(e)
+			if(ele.is(":checked")){
+				headers.push(ele.data("col"))
+			}
+		})
+
+		if(headers.length < 1){return}
+
 		let csv_string = headers.join(",") + "\n"
 
 		$("tr", "#table_body").each((i, e)=>{
@@ -103,8 +112,10 @@ $("#input_search").on("input", e=>{
 	barrs.update_table()
 })
 
-
-
 $("#input_save").on("click", e=>{
+	$("#save_modal").modal("show")
+})
+
+$("#save_save").on("click", e=>{
 	barrs.create_csv()
 })
