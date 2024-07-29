@@ -69,7 +69,11 @@
                 <div class="form-check"><input id="save_size" class="form-check-input" type="checkbox" data-col="size" /><label class="form-check-label" for="save_size" style="margin-left: 5px;">Size</label></div>
                 <div class="form-check"><input id="save_qty" class="form-check-input" type="checkbox" data-col="qty" checked /><label class="form-check-label" for="save_qty" style="margin-left: 5px;">Quantity</label></div>
             </div>
-            <div class="modal-footer"><button class="btn btn-outline-light" type="button" data-bs-dismiss="modal">Cancel</button><button id="save_save" class="btn btn-outline-primary" type="button">Save</button></div>
+            <div class="modal-footer">
+                <button id="save_csv" class="btn btn-outline-primary" type="button">CSV</button>
+                <button id="save_pdf" class="btn btn-outline-primary" type="button">PDF</button>
+                <button class="btn btn-outline-light" type="button" data-bs-dismiss="modal">Cancel</button>
+            </div>
         </div>
     </div>
 </div>
@@ -81,7 +85,9 @@
         <td class="text-center cell_qty"><input class="input_qty" type="text" style="width: 3em;" /></td>
     </tr>
 </template>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="{{ url_for('static', filename='assets/morrisons/barrs/FileSaver.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 <script src="{{ url_for('static', filename='assets/morrisons/barrs/barrs_order.js') }}" type="module"></script>
 <script src="{{ url_for('static', filename='assets/morrisons/barrs/barrs_details.js') }}" type="module"></script>
 {% endblock %}
