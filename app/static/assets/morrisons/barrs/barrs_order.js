@@ -31,7 +31,7 @@ class Barrs{
 		}
 	}
 
-	update_table_visibility(){
+	update_table(){
 		const pmp_unfiltered = !($("#input_pmp").is(':checked'))
 		const size_value = $("#input_size").find(":selected").val()
 		const search_value = $("#input_search").val().toLowerCase()
@@ -64,13 +64,13 @@ class Barrs{
 window.barrs = new Barrs()
 
 $("#input_pmp").on("input", e=>{
-	barrs.update_table_visibility()
+	barrs.update_table()
 })
 
 $("#input_size").on("input", e=>{
-	barrs.update_table_visibility()
+	barrs.update_table()
 })
 
 $("#input_search").on("input", e=>{
-	barrs.update_table_visibility()
+	barrs.update_table()
 })
