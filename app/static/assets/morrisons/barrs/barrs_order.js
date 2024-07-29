@@ -34,6 +34,7 @@ class Barrs{
 	update_table_visibility(){
 		const pmp_unfiltered = !($("#input_pmp").is(':checked'))
 		const size_value = $("#input_size").find(":selected").val()
+		const search_value = $("#input_search").val().toLowerCase()
 		$("tr", "#table_body").each((i, e)=>{
 			let visible = true
 			const ele = $(e)
@@ -44,6 +45,10 @@ class Barrs{
 			}
 
 			if(!(size_value === "any" || size_value === this.products[idx].size)){
+				visible = false
+			}
+
+			if(!(search_value === "" || this.products[idx].simplified_description.toLowerCase().includes(search_value))){
 				visible = false
 			}
 
@@ -63,5 +68,9 @@ $("#input_pmp").on("input", e=>{
 })
 
 $("#input_size").on("input", e=>{
+	barrs.update_table_visibility()
+})
+
+$("#input_search").on("input", e=>{
 	barrs.update_table_visibility()
 })
