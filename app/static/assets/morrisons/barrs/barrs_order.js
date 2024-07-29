@@ -1,6 +1,7 @@
 class Barrs{
 	constructor(){
 		this.products = {}
+		this.order_size =0
 
 		this.load_products()
 	}
@@ -113,6 +114,7 @@ $("#input_search").on("input", e=>{
 })
 
 $("#input_save").on("click", e=>{
+	$("#save_order_size").text(`Order size: ${barrs.order_size}`)
 	$("#save_modal").modal("show")
 })
 
