@@ -119,3 +119,13 @@ $("#input_save").on("click", e=>{
 $("#save_save").on("click", e=>{
 	barrs.create_csv()
 })
+
+$("#table_body").on('input', '.input_qty', e=>{
+	const qty = parseInt($(e.target).val())
+	const idx = $(e.target).parent().parent().data("idx")
+	barrs.products[idx].qty = qty
+	barrs.order_size = 0
+	Object.values(barrs.products).forEach(product=>{
+		barrs.order_size += product.qty
+	})
+});
