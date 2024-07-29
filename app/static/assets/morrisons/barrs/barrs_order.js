@@ -32,11 +32,22 @@ class Barrs{
 	}
 
 	update_table_visibility(){
-		const is_not_checked = !($("#input_pmp").is(':checked'))
+		const pmp_unfiltered = !($("#input_pmp").is(':checked'))
+		const size_value = $("#input_size").find(":selected").val()
 		$("tr", "#table_body").each((i, e)=>{
+			let visible = true
 			const ele = $(e)
 			const idx = $(ele).data("idx")
-			if(is_not_checked || this.products[idx].price_marked){
+
+			if(!(pmp_unfiltered || this.products[idx].price_marked)){
+				visible = false
+			}
+
+			if(!(size_value === "any" || size_value === this.products[idx].size)){
+				visible = false
+			}
+
+			if(visible){
 				ele.removeClass("d-none")
 			} else {
 				ele.addClass("d-none")
@@ -48,5 +59,9 @@ class Barrs{
 window.barrs = new Barrs()
 
 $("#input_pmp").on("input", e=>{
+	barrs.update_table_visibility()
+})
+
+$("#input_size").on("input", e=>{
 	barrs.update_table_visibility()
 })
