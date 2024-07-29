@@ -59,6 +59,34 @@ class Barrs{
 			}
 		})
 	}
+
+	create_csv(){
+		const headers = ["jwf_code", "jwf_description", "qty"]
+		let csv_string = headers.join(",") + "\n"
+
+		$("tr", "#table_body").each((i, e)=>{
+			const ele = $(e)
+			const idx = $(ele).data("idx")
+
+			const qty = parseInt($(".input_qty", ele).val() || "0")
+
+			if(qty>0){
+				const data = []
+				headers.forEach(col=>{
+					if(col==="qty"){
+						data.push(qty)
+					} else {
+						data.push(barrs.products[idx][col])
+					}
+				})
+
+				csv_string += (data.join(",") + "\n")
+			}
+		})
+
+		let file = new File([csv_string], "order.csv", { type: "text/csv;charset=utf-8" })
+		saveAs(file)
+	}
 }
 
 window.barrs = new Barrs()
@@ -73,4 +101,10 @@ $("#input_size").on("input", e=>{
 
 $("#input_search").on("input", e=>{
 	barrs.update_table()
+})
+
+
+
+$("#input_save").on("click", e=>{
+	barrs.create_csv()
 })
