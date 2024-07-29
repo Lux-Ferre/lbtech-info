@@ -74,25 +74,16 @@ class Barrs{
 
 		let csv_string = headers.join(",") + "\n"
 
-		$("tr", "#table_body").each((i, e)=>{
-			const ele = $(e)
-			const idx = $(ele).data("idx")
-
-			const qty = parseInt($(".input_qty", ele).val() || "0")
-
-			if(qty>0){
+		for(const product of Object.values(barrs.products)){
+			if(product.qty>0){
 				const data = []
 				headers.forEach(col=>{
-					if(col==="qty"){
-						data.push(qty)
-					} else {
-						data.push(barrs.products[idx][col])
-					}
+					data.push(product[col])
 				})
 
 				csv_string += (data.join(",") + "\n")
 			}
-		})
+		}
 
 		let file = new File([csv_string], "order.csv", { type: "text/csv;charset=utf-8" })
 		saveAs(file)
