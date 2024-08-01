@@ -87,7 +87,9 @@ class Barrs {
             }
         }
 
-        let file = new File([csv_string], "order.csv", {type: "text/csv;charset=utf-8"})
+        const filename = `barrs_order_${new Date().toLocaleDateString("de-DE")}.csv`
+
+        let file = new File([csv_string], filename, {type: "text/csv;charset=utf-8"})
         saveAs(file)
     }
 
@@ -124,8 +126,9 @@ class Barrs {
             body: table_data,
         })
 
+        const filename = `barrs_order_${new Date().toLocaleDateString("de-DE")}.pdf`
 
-        doc.save('order.pdf');
+        doc.save(filename);
     }
 }
 
