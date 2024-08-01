@@ -7,6 +7,15 @@ $("#verisae_card").on("click", e =>{
 $("#recs_card").on("click", e =>{
     window.location.href = $("#flask_data").data("recs")
 })
+
+$("#barrs_product_card").on("click", e =>{
+    window.location.href = "https://tinyurl.com/4davs5a4"
+})
+
+$("#barrs_order_card").on("click", e =>{
+    window.location.href = $("#flask_data").data("barrs")
+})
+
 $("#guide_card").on("click", e =>{
     $("#password_modal").modal("show")
 })
@@ -23,8 +32,4 @@ $("#password_input_submit").on("click", e =>{
     } else {
         window.alert("Password incorrect!")
     }
-})
-
-$("#barrs_card").on("click", e =>{
-    window.location.href = "https://tinyurl.com/4davs5a4"
 })

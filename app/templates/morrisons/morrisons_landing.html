@@ -3,7 +3,7 @@
 {% block head %}
     {{ super() }}
     <link href="{{ url_for('static', filename='assets/morrisons/landing/landing.css') }}" rel="stylesheet">
-    <meta id="flask_data" data-recs="{{ url_for('morrisons_recs') }}"/>
+    <meta id="flask_data" data-recs="{{ url_for('morrisons_recs') }}" data-barrs="{{ url_for('morrisons_barrs') }}"/>
 {% endblock %}
 
 {% block title %}Morrison's: Landing Page{% endblock %}
@@ -48,10 +48,18 @@
 				</div>
 			</div>
             <div class="col d-flex justify-content-center">
-				<div id="barrs_card" class="card bg-danger-subtle border-danger text-center">
+				<div id="barrs_product_card" class="card bg-danger-subtle border-danger text-center">
                     <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/barrs.png') }}">
 					<div class="card-body">
-						<h4 class="card-title">Barrs Order Sheet</h4>
+						<h4 class="card-title">Barrs Product Spreadsheet</h4>
+					</div>
+				</div>
+			</div>
+            <div class="col d-flex justify-content-center">
+				<div id="barrs_order_card" class="card bg-danger-subtle border-danger text-center">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/barrs.png') }}">
+					<div class="card-body">
+						<h4 class="card-title">Barrs Order Generator</h4>
 					</div>
 				</div>
 			</div>
