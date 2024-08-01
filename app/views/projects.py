@@ -1,13 +1,5 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template
 from app import app
-
-from app.forms import ContactForm
-from app.email import send_contact_email
-
-
-@app.route("/")
-def index():
-    return render_template("index.html")
 
 
 @app.route("/projects/archive/map")
@@ -30,43 +22,9 @@ def pokemon():
     return render_template("projects/archive/pokemon.html")
 
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    form = ContactForm()
-    if form.validate_on_submit():
-        send_contact_email(contact=form.email.data, input_message=form.message.data)
-        return redirect(url_for('contact_success'))
-    return render_template("contact.html", form=form)
-
-
-@app.route("/contact/success")
-def contact_success():
-    return render_template("contact_success.html")
-
-
 @app.route("/projects")
 def projects():
     return render_template("projects/projects.html")
-
-
-@app.route("/morrisons")
-def morrisons_landing():
-    return render_template("morrisons/morrisons_landing.html")
-
-
-@app.route("/morrisons/recs")
-def morrisons_recs():
-    return render_template("morrisons/recs.html")
-
-
-@app.route("/morrisons/barrs")
-def morrisons_barrs():
-    return render_template("morrisons/barrs_order.html")
 
 
 @app.route("/projects/sqmusic")
@@ -90,8 +48,3 @@ def git_projects():
         {"number": "Six", "title": "CTC21 - Nautical Wrecks", "body": "Another open source project. Here, I worked with 2 others to find a data source of wrecks off the coasts of Scotland and incorporate the information into WikiData. I took the lead on writing the scraping and cleaning software while my collegues navigated the issue of finding a source with an open license. Together, we looked through the data to decide how to clean it before it was automatically uploaded to WikiData with the help of Ian.", "link":"https://github.com/CodeTheCity/ctc21_nautical_wrecks"}
     ]
     return render_template("projects/git-projects.html", posts=posts)
-    
- 
-@app.route("/books")
-def books():
-    return render_template("books.html")

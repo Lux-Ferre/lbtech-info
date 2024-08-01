@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 mail = Mail(app)
 
-from app import views
+from app.views import main, morrisons, projects, errors
 
 if __name__ == "__main__":
     app.run(debug=False)
