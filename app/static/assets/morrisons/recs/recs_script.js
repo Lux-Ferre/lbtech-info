@@ -1,64 +1,81 @@
 class Recs{
-	getValue(elementName){
-		let elementValue = document.getElementById(elementName).value
+	constructor() {
+		this.draw_sales = $(".draw_sales")
+		this.draw_cancels = $(".draw_cancels")
+		this.draw_prizes = $(".draw_prizes")
+		this.scratch_prizes = $(".scratch_prizes")
+		this.till_prizes = $(".till_prizes")
+		this.till_sales = $(".till_sales")
+		this.result_slip_sales = $("#result_slip_sales")
+		this.result_slip_prizes = $("#result_slip_prizes")
+		this.result_till_sales = $("#result_till_sales")
+		this.result_till_prizes = $("#result_till_prizes")
+		this.result_sales_var = $("#result_sales_var")
+		this.result_prizes_var = $("#result_prizes_var")
 
-		if (elementValue === ""){
-			elementValue = 0
-		} else {
-			elementValue = parseFloat(elementValue)
-		}
-		return elementValue
+		this.current_body = 0
 	}
 
-
-	calcVals() {
-		let slipSaleTotal = 0
-		let officeSaleTotal = 0
-		let officePrizeTotal = 0
-
-		for (let i = 1; i < 7; i++) {
-			const elementId = "slipInput" + i
-			const elementValue = this.getValue(elementId)
-			slipSaleTotal += elementValue
+	navigate(dir){
+		this.current_body = (this.current_body + dir).mod(4)
+		for (let i = 0; i < 4; i++) {
+			if(i===this.current_body){
+				$(`#body_${i}`).removeClass("d-none")
+			} else {
+				$(`#body_${i}`).addClass("d-none")
+			}
 		}
-
-		const cancels = this.getValue("slipCancels")
-		slipSaleTotal -= cancels
-
-		document.getElementById("slipSalesOut").value = slipSaleTotal
-
-		const lottoPrizes = this.getValue("slipLottoPrizes")
-
-		let instantPrizes = this.getValue("slipInstantPrizes")
-
-		const slipPrizeTotal = lottoPrizes + instantPrizes
-
-		document.getElementById("slipPrizeOut").value = slipPrizeTotal
-
-		for (let i = 1; i < 7; i++) {
-			const elementId = "officeInput" + i
-			const elementValue = this.getValue(elementId)
-
-			officeSaleTotal += elementValue
-		}
-
-		document.getElementById("actualSalesOut").value = officeSaleTotal
-
-		for (let i = 1; i < 4; i++) {
-			const elementId = "officePrizes" + i
-			const elementValue = this.getValue(elementId)
-
-			officePrizeTotal += elementValue
-		}
-
-		document.getElementById("actualPrizeOut").value = officePrizeTotal
-
-		const saleVariance = officeSaleTotal - slipSaleTotal
-		document.getElementById("saleVariance").value = saleVariance
-
-		const prizeVariance = officePrizeTotal - slipPrizeTotal
-		document.getElementById("prizeVariance").value = prizeVariance
 	}
+
+	calculate_results(){
+		let slip_sales = 0
+		this.draw_sales.each((i, e)=>{
+			slip_sales += parseInt($(e).val() || 0)
+		})
+		slip_sales -= parseInt(this.draw_cancels.val() || 0)
+
+		let slip_prizes = 0
+		slip_prizes += parseInt(this.draw_prizes.val() || 0)
+		slip_prizes += parseInt(this.scratch_prizes.val() || 0)
+
+		let total_till_sales = 0
+		this.till_sales.each((i, e)=>{
+			total_till_sales += parseInt($(e).val() || 0)
+		})
+
+		let total_till_prizes = 0
+		this.till_prizes.each((i, e)=>{
+			total_till_prizes += parseInt($(e).val() || 0)
+		})
+
+		const prize_var = total_till_prizes - slip_prizes
+		const sales_var = slip_sales - total_till_sales
+
+		this.result_slip_sales.val(slip_sales)
+		this.result_slip_prizes.val(slip_prizes)
+		this.result_till_sales.val(total_till_sales)
+		this.result_till_prizes.val(total_till_prizes)
+		this.result_sales_var.val(sales_var)
+		this.result_prizes_var.val(prize_var)
+	}
+
 }
 
-const recs_functions = new Recs()
+Number.prototype.mod = function (n) {
+  "use strict";
+  return ((this % n) + n) % n;
+}
+
+window.recs = new Recs()
+
+$("#recs_nav_left").on("click", e =>{
+	recs.navigate(-1)
+})
+
+$("#recs_nav_right").on("click", e =>{
+	recs.navigate(1)
+})
+
+$("input", $(".input_body")).on("input", e=>{
+	recs.calculate_results()
+})
