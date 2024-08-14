@@ -15,6 +15,11 @@ def about():
     return render_template("main/about.html")
 
 
+@app.route("/draw")
+def draw():
+    return render_template("main/draw.html")
+
+
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()

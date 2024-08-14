@@ -1,0 +1,23 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+canvas{
+  background-color: white;
+}
+
+#drawing_canvas{
+  width: 98vw;
+  height: 98vw;
+  max-width: 80vh;
+  max-height: 80vh;
+}
+
+.colour_picker{
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
+}

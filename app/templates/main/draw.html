@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Draw Things</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/main/favicon.svg') }}">
+    <link href="{{ url_for('static', filename='libraries/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='assets/pages/base.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='assets/pages/play_draw.css') }}" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center" id="canvas_container"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex align-content-center" id="brush_size_container">
+                    <input class="w-100" type="range" id="brush_size" name="brush_size" min="1" max="25" value="5"/>
+                    <label for="brush_size"></label>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center gx-0" id="brush_colour_container"></div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/jQuery/jquery-3.7.1.min.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='assets/pages/play_draw.js') }}"></script>
+</body>
+
+</html>
