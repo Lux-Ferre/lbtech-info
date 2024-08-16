@@ -1,0 +1,32 @@
+<svg width="256" height="256" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="hexagon_grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#F00" />
+    <stop offset="100%" stop-color="#400" />
+  </linearGradient>
+  <radialGradient id="black_hole_grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="60%" style="stop-color:#53187d;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#53187d;stop-opacity:0" />
+  </radialGradient>
+ </defs> 
+ <g>
+  <title>favicon</title>
+  <polygon
+    id="hexagon"
+    points="
+    50,1
+    95,25
+    95,75
+    50,99
+    5,75
+    5,25
+    "
+    fill="url(#hexagon_grad)"
+    stroke="#000"
+    stroke-width="1"
+  />
+  <path stroke="#000" stroke-width="2" id="ship" d="m41.49275,29.79426l-19.03137,-0.08227l-8.70326,10.29337l0.14251,14.27633l8.56451,9.47732l67.77384,0" fill="none"/>
+  <ellipse ry="20" rx="20" id="black_hole_rad" cy="45" cx="60" fill="url(#black_hole_grad)"/>
+  <ellipse stroke="#000" ry="12" rx="12" id="black_hole" cy="45" cx="60" fill="black"/>
+ </g>
+</svg>

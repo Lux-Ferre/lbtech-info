@@ -1,0 +1,130 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Preloader - Start */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+}
+
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #f2f2f2;
+    border-top: 6px solid #56829e ;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+
+	-webkit-animation: animate-preloader 1s linear infinite;
+	animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+	100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-preloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+	100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/* Preloader - End */
+
+#map {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#select_container {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 11px 0;
+}
+
+#country_select {
+    width: 200px;
+    margin: 0 auto;
+}
+
+@keyframes modal-in-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes modal-out-left {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.modal.fade .modal-dialog {
+    animation-name: modal-in-left;
+}
+
+.modal.fade.show .modal-dialog {
+    animation-name: modal-in-left;
+}
+
+.modal.fade:not(.show) .modal-dialog {
+    animation-name: modal-out-left;
+}
+
+.modal.fade .modal-dialog {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.news_article{
+    border-bottom: 1px dotted;
+    padding: 10px 0;
+}
+
+.news_article_link{
+    color: inherit;
+}
+
+.weather_box{
+    border: outset 2px;
+}
+
+.weather_alert{
+    border-bottom: dotted 1px black;
+}

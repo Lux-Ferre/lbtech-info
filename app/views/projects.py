@@ -26,6 +26,10 @@ def pokemon():
 def projects():
     return render_template("projects/projects.html")
 
+@app.route("/gazetteer")
+def gazetteer():
+    return render_template("projects/gazetteer.html")
+
 
 @app.route("/projects/sqmusic")
 def sqmusic():

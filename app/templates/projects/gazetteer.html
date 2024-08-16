@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gazetteer</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/main/favicon.svg') }}">
+    <link href="{{ url_for('static', filename='libraries/bootstrap/bootstrap.min.css') }}" rel="stylesheet"
+          type="text/css">
+    <link href="{{ url_for('static', filename='libraries/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='libraries/leaflet/MarkerCluster.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for('static', filename='libraries/leaflet/MarkerCluster.Default.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for('static', filename='libraries/leaflet/easy-button.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for('static', filename='libraries/leaflet/leaflet.extra-markers.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for('static', filename='assets/gazetteer/main.css') }}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="preloader"></div>
+<span id="select_container">
+  <select id="country_select" class="form-select shadow-sm"></select>
+</span>
+
+<div id="map"></div>
+
+<div id="facts_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info-subtle">
+                <h4 class="modal-title">Quick Facts</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <h1 id="modal_country_name"></h1>
+                    </div>
+                    <div class="col d-flex justify-content-end"><img id="modal_flag" src="" alt=""/></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fa-solid fa-landmark-flag fa-xl text-info"></i></td>
+                                        <td>Capital City</td>
+                                        <td id="modal_capital" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-globe fa-xl text-info"></i></td>
+                                        <td>Continent</td>
+                                        <td id="modal_continent" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-coins fa-xl text-info"></i></td>
+                                        <td>Currency</td>
+                                        <td id="modal_currency" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-person fa-xl text-info"></i></td>
+                                        <td>Population</td>
+                                        <td id="modal_population" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-ruler-combined fa-xl text-info"></i></td>
+                                        <td>Area (km²)</td>
+                                        <td id="modal_area" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-ear-listen fa-xl text-info"></i></td>
+                                        <td>Languages</td>
+                                        <td id="modal_languages" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-equals fa-xl text-info"></i></td>
+                                        <td>ISO Alpha 2</td>
+                                        <td id="modal_iso2" class="text-end"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-bars fa-xl text-info"></i></td>
+                                        <td>ISO Alpha 3</td>
+                                        <td id="modal_iso_3" class="text-end"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+        </div>
+    </div>
+</div>
+
+<div id="currency_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success-subtle">
+                <h4 class="modal-title">Currency Calculator</h4>
+                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-floating mb-3">
+                        <input id="from_amount" type="number" class="form-control" value="1" min="1" step="1">
+                        <label for="from_amount">From USD</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select id="rate_select" class="form-select"></select>
+                        <label for="rate_select">Convert to</label>
+                    </div>
+                    <div class="form-floating">
+                        <input id="to_amount" type="text" class="form-control" disabled>
+                        <label for="to_amount">Result</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="news_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h4 class="modal-title">Breaking News</h4>
+                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div id="news_modal_body" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wiki_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info-subtle">
+                <h4 id="wiki_title" class="modal-title">Wikipedia</h4>
+                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span id="wiki_extract"></span><a id="wiki_link" href="" target="_blank">...</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="weather_modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-subtle">
+                <div>
+                    <span class="fs-1">Weather</span>
+                    <span> (provided by </span>
+                    <a href="https://www.weatherapi.com/" target="_blank">WeatherAPI.com</a>
+                    <span>)</span>
+                </div>
+                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div id="weather_box_0" class="col weather_box">
+                        <div class="row">
+                            <div class="col"><span class="fs-5 fw-bold">TODAY</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-sm-flex justify-content-sm-center"><img src="" alt="" class="weather_icon"/></div>
+                            <div class="col text-center">
+                                <div class="row">
+                                    <div class="col"><span class="fs-3 fw-bold max_temp">0</span><span
+                                            class="fs-3 fw-bold">°C</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="fs-4 text-secondary min_temp">0</span><span
+                                            class="fs-4 text-secondary">°C</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="weather_box_1" class="col weather_box">
+                        <div class="row">
+                            <div class="col text-center"><span class="fs-5 fw-bold">TOMORROW</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-sm-flex justify-content-sm-center"><img class="weather_icon"/></div>
+                            <div class="col text-center">
+                                <div class="row">
+                                    <div class="col"><span class="fs-3 fw-bold max_temp">0</span><span
+                                            class="fs-3 fw-bold">°C</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="fs-4 text-secondary min_temp">0</span><span
+                                            class="fs-4 text-secondary">°C</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="weather_box_2" class="col weather_box">
+                        <div class="row">
+                            <div class="col text-center"><span id="weather_date" class="fs-5 fw-bold">DATE</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-sm-flex justify-content-sm-center"><img class="weather_icon"/></div>
+                            <div class="col text-center">
+                                <div class="row">
+                                    <div class="col"><span class="fs-3 fw-bold max_temp">0</span><span
+                                            class="fs-3 fw-bold">°C</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="fs-4 text-secondary min_temp">0</span><span
+                                            class="fs-4 text-secondary">°C</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="weather_alerts" class="modal-footer bg-warning"></div>
+        </div>
+    </div>
+</div>
+
+<template id="country_option_template">
+    <option value="" data-iso3=""></option>
+</template>
+
+<template id="currency_option_template">
+    <option value="" data-rate=""></option>
+</template>
+
+<template id="weather_alert_template">
+    <div class="row weather_alert">
+        <div class="col">
+            <p class="text-black"></p>
+        </div>
+    </div>
+</template>
+
+<template id="news_article_template">
+    <div class="row news_article">
+        <div class="col">
+            <img class="img-fluid rounded" src="" alt=""/>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <a class="fw-bold fs-6 news_article_link" target="_blank" href=""></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="fw-light fs-6 mb-1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/jQuery/jquery-3.7.1.min.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/leaflet/leaflet.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/leaflet/leaflet.markercluster.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/leaflet/easy-button.js') }}"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='libraries/leaflet/leaflet.extra-markers.min.js') }}"></script>
+<script src="https://kit.fontawesome.com/9e06056b3d.js" crossorigin="anonymous"></script>
+<script type="application/javascript" src="{{ url_for('static', filename='assets/gazetteer/main.js') }}"></script>
+</body>
+</html>

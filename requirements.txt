@@ -4,3 +4,4 @@ flask-wtf
 wtforms
 email_validator
 python-dotenv
+requests
