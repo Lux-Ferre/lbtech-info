@@ -14,6 +14,29 @@ class Recs{
 		this.result_prizes_var = $("#result_prizes_var")
 
 		this.current_body = 0
+
+		this.initialise_tooltips()
+	}
+
+	initialise_tooltips(){
+		const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+		const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+		tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+			tooltipTriggerEl.addEventListener('touchstart', function () {
+				const tooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+				tooltip.toggle(); // Toggle the tooltip visibility on touch
+			});
+		});
+
+		document.addEventListener('touchstart', function (event) {
+			tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+				if (!tooltipTriggerEl.contains(event.target)) {
+					const tooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+					tooltip.hide(); // Hide the tooltip if touching outside
+				}
+			});
+		});
 	}
 
 	navigate(dir){

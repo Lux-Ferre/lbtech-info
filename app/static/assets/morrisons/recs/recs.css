@@ -1,41 +1,20 @@
-#recsCarousel{
-	width: 100%;
-	font-weight: bold;
-	height: 100%;
+i {
+	cursor: pointer;
 }
 
-#recsCarousel .col-3{
-	font-size: calc(2vw);
+.card {
+	max-width: 600px;	/* Consider using clamp */
+	min-width: 300px;
 }
 
-#recsCarousel .row{
-	height: 100%;
+.slip_row {
+	background: var(--bs-danger-text-emphasis);
 }
 
-#recsCarousel .carousel-inner{
-	height: 100%;
+.recs_nav {
+	margin: 0 5px;
 }
 
-#recsCarousel .carousel-item{
-	height: 100%;
-}
-
-#recsCarousel .card{
-	height: 100%;
-}
-
-#recsCarousel input{
-	width: 100%;
-}
-
-#recsCarousel .varianceOutput{
-	color: #ff4d40;
-}
-
-.recsSpacerRow{
-	padding-top: 2em;
-}
-
-.tableInput{
-    width: 7em;
+.recs_input {
+	width: 7em;
 }
