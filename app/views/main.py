@@ -32,8 +32,3 @@ def contact():
 @app.route("/contact/success")
 def contact_success():
     return render_template("main/contact_success.html")
-
-
-@app.route("/books")
-def books():
-    return render_template("main/books.html")
