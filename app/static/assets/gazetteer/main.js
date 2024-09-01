@@ -281,8 +281,8 @@ class MapHandler {
 		for (let i = 0; i < forecasts.length; i++) {
 			const weather_box = $(`#weather_box_${i}`)
 			$(".weather_icon", weather_box).attr("src", forecasts[i].condition)
-			$(".max_temp", weather_box).text(forecasts[i].max_temp)
-			$(".min_temp", weather_box).text(forecasts[i].min_temp)
+			$(".max_temp", weather_box).text(Math.round(forecasts[i].max_temp))
+			$(".min_temp", weather_box).text(Math.round(forecasts[i].min_temp))
 		}
 		$("#weather_date").text(dateFns.format(new Date(forecasts[2].date), 'EEE, do'))
 		const alerts = weather.alerts
