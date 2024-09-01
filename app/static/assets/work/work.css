@@ -1,0 +1,42 @@
+html {
+    overscroll-behavior: none;
+}
+
+body {
+
+}
+
+#work_background {
+    overflow: scroll;
+    scrollbar-width: none;
+    padding: 0;
+    scroll-snap-type: y mandatory;
+}
+
+#tile_holder {
+    padding: 0;
+}
+
+.background_tile {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    opacity: 1;
+    height: 100vh;
+}
+
+#info_bar {
+    position: fixed;
+    width: 100%;
+    height: 20%;
+    top: calc(50vh - 10%);
+    overflow: hidden;
+    padding: 0;
+}
+
+.info_colour_tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}

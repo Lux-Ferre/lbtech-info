@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='assets/work/work.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Work{% endblock %}
+{% block content %}
+<div id="work_background" class="row w-100">
+    <div class="background_tile" style="background-color: darkcyan">></div>
+    <div class="background_tile" style="background-color: darkorange"></div>
+    <div class="background_tile" style="background-color: darkred"></div>
+    <div class="background_tile" style="background-color: darkgreen"></div>
+    <div class="background_tile" style="background-color: darkblue"></div>
+
+    <div id="info_bar">
+        <div class="info_colour_tile" style="background-color: darkred"></div>
+        <div class="info_colour_tile" style="background-color: darkblue"></div>
+        <div class="info_colour_tile" style="background-color: darkgreen"></div>
+        <div class="info_colour_tile" style="background-color: darkorange"></div>
+        <div class="info_colour_tile" style="background-color: darkcyan"></div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='assets/work/work.js') }}" type="module"></script>
+{% endblock %}
