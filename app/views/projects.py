@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, jsonify
 from app import app
 
 
@@ -35,6 +35,15 @@ def gazetteer():
 @app.route("/projects/sqmusic")
 def sqmusic():
     return render_template("projects/sq-music.html")
+
+
+@app.route("/projects/sqmusic/clientid")
+def sqmusic_get_id():
+    client_id = app.config["SPOTIFY_CLIENT_ID"]
+    response = {
+        "client_id": client_id,
+    }
+    return jsonify(response), 200
 
 
 @app.route("/projects/external/two")
