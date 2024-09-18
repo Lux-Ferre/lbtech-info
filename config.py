@@ -16,3 +16,4 @@ class Config:
     EXCHANGERATE_API_KEY = os.environ.get('EXCHANGERATE_API_KEY')
     MEDIASTACK_KEY = os.environ.get('MEDIASTACK_KEY')
     WEATHER_API_KEY = os.environ.get('WEATHER_API_KEY')
+    SPOTIFY_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
