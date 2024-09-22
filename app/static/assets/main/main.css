@@ -1,20 +1,17 @@
 /* Dark mode (Default) */
 :root{
 	--body-bg: #333333;
-	--body-color: #FFFFFF;
 }
 
 /* Light mode */
 @media(prefers-color-scheme:light){
 	:root{
 		--body-bg: #CCCCCC;
-		--body-color: #000000;
 	}
 }
 
 body{
 	background: var(--body-bg);
-	color: var(--body-color);
 }
 
 .navbar-brand{
@@ -47,41 +44,13 @@ body{
 }
 /* Home Page - End */
 
-/* Projects Home - Start */
-#projectsCarousel{
-	width: 100%;
-	height: 100%;
-}
-
-#projectsCarousel .row{
-	height: 100%;
-}
-
-#projectsCarousel .carousel-inner{
-	height: 100%;
-}
-
-#projectsCarousel .carousel-item{
-	height: 100%;
-}
-
-#projectsCarousel .card{
-	height: 100%;
-}
-
-#projectsCarousel .projectScreenshot{
-	max-height: 100%;
-	width: auto;
-}
-/*Projects Home - End*/
-
 /*Contacts Page - Start*/
 #emailInputContainer > input {
-  width: 100%;
+	width: 100%;
 }
 
 #messageInputContainer > textarea {
-  width: 100%;
-  min-height: 40vh;
+	width: 100%;
+	min-height: 40vh;
 }
 /*Contacts Page - End*/
