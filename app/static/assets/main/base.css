@@ -1,6 +1,7 @@
 /* Dark mode (Default) */
 :root{
 	--body-bg: #333333;
+	overflow-x: hidden;
 }
 
 /* Light mode */
