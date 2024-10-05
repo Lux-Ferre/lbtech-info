@@ -1,26 +1,9 @@
-/* Dark mode (Default) */
-:root{
-	--body-bg: #333333;
-	overflow-x: hidden;
-}
-
-/* Light mode */
-@media(prefers-color-scheme:light){
-	:root{
-		--body-bg: #CCCCCC;
-	}
-}
-
-body{
-	background: var(--body-bg);
-}
-
 .navbar-brand{
     margin-left: 10px;
 }
 
 #content{
-	height: calc(100vh - 59px);
+	height: calc(100vh - 60px);
 }
 
 /* Home Page - Start */

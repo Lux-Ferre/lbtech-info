@@ -27,21 +27,17 @@
 	<body>
 		<div id="baseContainer">
 			{% block navbar %}
-			<nav class="navbar navbar-expand-lg bg-dark">
-				<a class="navbar-brand" href="{{ url_for('index') }}">
+			<nav class="navbar border-bottom border-body navbar-expand">
+                <a class="navbar-brand" href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='assets/main/favicon.svg') }}" alt="LuxFerre.dev" height="30" width="30">
                 </a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapasedMenu">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapasedMenu">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link disabled" href="{{ url_for('work') }}">Work</a>
-						</li>
-                        <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Quick Links</a>
-							<div class="dropdown-menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="{{ url_for('work') }}">Work</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Quick Links</a>
+                        <div class="dropdown-menu">
 {#								<div class="dropdown dropend">#}
 {#									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Archive</a>#}
 {#									<div class="dropdown-menu">#}
@@ -50,55 +46,54 @@
 {#										<a class="dropdown-item" target="_blank" href="{{ url_for('pokemon') }}">Pokemon Type Generator</a>#}
 {#									</div>#}
 {#								</div>#}
-								<div class="dropdown dropend">
-									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">External</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" target="_blank" href="https://word-generator.anvil.app">Word Generator</a>
-										<a class="dropdown-item" target="_blank" href="https://liars-game.anvil.app">Most of These People Are Lying</a>
-									</div>
-								</div>
-								<div class="dropdown dropend">
-									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Portfolio Projects</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" target="_blank" href="https://itcs.lbtechnology.info/gazetteer">Gazetteer</a>
-										<a class="dropdown-item" target="_blank" href="https://itcs.lbtechnology.info/companydirectory">Company Directory</a>
-									</div>
-								</div>
-								<div class="dropdown dropend">
-									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Diamond Hunt</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/LuxBot">LuxBot</a>
-										<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/idlepixel-websocket-monitor">WS Monitor</a>
-										<a class="dropdown-item" target="_blank" href="https://data.idle-pixel.com/api/docs">Official API</a>
-										<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/DHP-Scripts">Userscripts</a>
+{#                            <div class="dropdown dropend">#}
+{#                                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">External</a>#}
+{#                                <div class="dropdown-menu">#}
+{#                                    <a class="dropdown-item" target="_blank" href="https://word-generator.anvil.app">Word Generator</a>#}
+{#                                    <a class="dropdown-item" target="_blank" href="https://liars-game.anvil.app">Most of These People Are Lying</a>#}
+{#                                </div>#}
+{#                            </div>#}
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Portfolio Projects</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" target="_blank" href="https://itcs.lbtechnology.info/gazetteer">Gazetteer</a>
+                                    <a class="dropdown-item" target="_blank" href="https://itcs.lbtechnology.info/companydirectory">Company Directory</a>
+                                </div>
+                            </div>
+                            <div class="dropdown dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Diamond Hunt</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/LuxBot">LuxBot</a>
+                                    <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/idlepixel-websocket-monitor">WS Monitor</a>
+                                    <a class="dropdown-item" target="_blank" href="https://data.idle-pixel.com/api/docs">Official API</a>
+                                    <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/DHP-Scripts">Userscripts</a>
 {#										<div class="dropdown-divider"></div>#}
 {#										<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/IdlePixel-Bot">LuxBot (archive)</a>#}
-									</div>
-								</div>
+                                </div>
+                            </div>
 {#								<div class="dropdown dropend">#}
 {#									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Hardware</a>#}
 {#									<div class="dropdown-menu">#}
 {#									</div>#}
 {#								</div>#}
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" target="_blank" href="https://img.luxferre.dev/i/m3VSgktmevjoms5Z28quKP">LuxShot</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/Gituich">Gituich</a>
-								<a class="dropdown-item" href="{{ url_for('sqmusic') }}">SQ Music Round Generator</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{ url_for('morrisons_landing') }}">Morrisons Tools</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/Lux-Ferre">GitHub</a>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ url_for('about') }}">About</a>
-						</li>
-					</ul>
-				</div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" target="_blank" href="https://img.luxferre.dev">LuxShot</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/Gituich">Gituich</a>
+                            <a class="dropdown-item" href="{{ url_for('sqmusic') }}">SQ Music Round Generator</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url_for('morrisons_landing') }}">Morrisons Tools</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/Lux-Ferre">GitHub</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                </ul>
 			</nav>
 			{% endblock %}
 
