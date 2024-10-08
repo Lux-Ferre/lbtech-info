@@ -1,3 +1,7 @@
+.navbar{
+	background-color: var(--bs-body-bg);
+}
+
 .navbar-brand{
     margin-left: 10px;
 }
@@ -38,3 +42,18 @@
 	min-height: 40vh;
 }
 /*Contacts Page - End*/
+
+/*About Page - Start*/
+@media (min-width: 768px) {
+	#about_left_col{
+		border-color: var(--bs-body-color);
+		border-width: 1px;
+		border-right-style: solid;
+	}
+}
+
+.about_divider{
+	border-bottom: 1px solid var(--bs-body-color);
+	margin: 10px 0;
+}
+/*About Page - End*/
