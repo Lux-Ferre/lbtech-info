@@ -30,29 +30,12 @@
 			<nav class="navbar border-bottom border-body navbar-expand sticky-top">
                 <a class="navbar-brand" href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='assets/main/favicon.svg') }}" alt="LuxFerre.dev" height="30" width="30">
+                    Home
                 </a>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="{{ url_for('work') }}">Work</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Quick Links</a>
                         <div class="dropdown-menu">
-{#								<div class="dropdown dropend">#}
-{#									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Archive</a>#}
-{#									<div class="dropdown-menu">#}
-{#										<a class="dropdown-item" target="_blank" href="{{ url_for('map_route') }}">Idle Kingdoms Planner</a>#}
-{#										<a class="dropdown-item" target="_blank" href="{{ url_for('bingo') }}">T90 Bingo</a>#}
-{#										<a class="dropdown-item" target="_blank" href="{{ url_for('pokemon') }}">Pokemon Type Generator</a>#}
-{#									</div>#}
-{#								</div>#}
-{#                            <div class="dropdown dropend">#}
-{#                                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">External</a>#}
-{#                                <div class="dropdown-menu">#}
-{#                                    <a class="dropdown-item" target="_blank" href="https://word-generator.anvil.app">Word Generator</a>#}
-{#                                    <a class="dropdown-item" target="_blank" href="https://liars-game.anvil.app">Most of These People Are Lying</a>#}
-{#                                </div>#}
-{#                            </div>#}
                             <div class="dropdown dropend">
                                 <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Portfolio Projects</a>
                                 <div class="dropdown-menu">
@@ -67,15 +50,8 @@
                                     <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/idlepixel-websocket-monitor">WS Monitor</a>
                                     <a class="dropdown-item" target="_blank" href="https://data.idle-pixel.com/api/docs">Official API</a>
                                     <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/DHP-Scripts">Userscripts</a>
-{#										<div class="dropdown-divider"></div>#}
-{#										<a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/IdlePixel-Bot">LuxBot (archive)</a>#}
                                 </div>
                             </div>
-{#								<div class="dropdown dropend">#}
-{#									<a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Hardware</a>#}
-{#									<div class="dropdown-menu">#}
-{#									</div>#}
-{#								</div>#}
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" target="_blank" href="https://img.luxferre.dev">LuxShot</a>
                             <div class="dropdown-divider"></div>
@@ -86,12 +62,6 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" target="_blank" href="https://github.com/Lux-Ferre/Lux-Ferre">GitHub</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
                     </li>
                 </ul>
 			</nav>

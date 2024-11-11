@@ -1,4 +1,5 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request, jsonify
+
 from app import app
 
 from app.forms import ContactForm
@@ -7,7 +8,8 @@ from app.email import send_contact_email
 
 @app.route("/")
 def index():
-    return render_template("main/index.html")
+    form = ContactForm()
+    return render_template("main/index.html", form=form)
 
 
 @app.route("/about")
@@ -25,13 +27,19 @@ def work():
     return render_template("main/work.html")
 
 
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/submit", methods=["POST"])
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        send_contact_email(contact=form.email.data, input_message=form.message.data)
-        return redirect(url_for('contact_success'))
-    return render_template("main/contact.html", form=form)
+        send_contact_email(
+            contact=form.email.data,
+            input_name=form.name.data,
+            input_subject=form.subject.data,
+            input_message=form.message.data
+        )
+        return jsonify({"result": "Success", "errors": []}), 202
+    else:
+        return jsonify({"result": "error", "errors": form.errors}), 400
 
 
 @app.route("/contact/success")

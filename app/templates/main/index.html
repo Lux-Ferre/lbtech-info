@@ -1,41 +1,472 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block head %}
-  {{ super() }}
-  <link href="{{ url_for('static', filename='assets/solar_system/styles.css') }}" rel="stylesheet">
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Index - Lux-Ferre.dev</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-{% block title %}Index{% endblock %}
-{% block content %}
-<div id="lightsOutBackground" class="d-none"></div>
-<div id="torch" class="d-none"></div>
-<div class="row w-100">
-	<div class="col-12 col-md-7">
-		<div class="text-center w-100">
-			<h1>Welcome!</h1>
-		</div>
-		<div style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
-		<div class="text-center">
-			<p>Have a look around at the apps and projects!</p>
-		</div>
-		<div class="d-flex justify-content-center w-100">
-			<div class="w-75" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
-		</div>
-		<div class="text-center">
-			<div class="d-flex flex-column" style="margin: 20px 0">
-				<p>Too bright to watch the planets? Turn the lights off! (Don't forget to use your torch to look around.)</p>
-				<div class="form-check form-switch align-self-center">
-					<input class="form-check-input" type="checkbox" role="switch" id="homepageLightSwitch" checked>
-					<label class="form-check-label" for="homepageLightSwitch"></label>
-				</div>
-			</div>
-		</div>
-		<div class="d-md-none" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
-		<div class="d-md-none" style="border-bottom: 1px solid var(--bs-body-color);margin: 10px 0;"></div>
-	</div>
-	<div class="col-12 col-md-5">
-		{% include 'main/_solar_system.html' %}
-	</div>
-</div>
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/main/favicon.svg') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ url_for('static', filename='assets/main/favicon.svg') }}">
 
-{% endblock %}
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static', filename='/template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/template/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/template/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/template/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/template/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{{ url_for('static', filename='/template/css/main.css') }}" rel="stylesheet">
+
+    <!-- =======================================================
+	* Template Name: iPortfolio
+	* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+	* Updated: Jun 29 2024 with Bootstrap v5.3.3
+	* Author: BootstrapMade.com
+	* License: https://bootstrapmade.com/license/
+	======================================================== -->
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+        <img src="{{ url_for('static', filename='assets/main/favicon.svg') }}" alt="" class="img-fluid">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+        <h1 class="sitename">Chris Milne</h1>
+    </a>
+
+    <div class="social-links text-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="github"><i class="bi bi-github"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+        <ul>
+            <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+            <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+            <li><a href="#tech"><i class="bi bi-keyboard navicon"></i> Technology</a></li>
+            <li><a href="#tools"><i class="bi bi-hdd-stack navicon"></i> Tools</a></li>
+            <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+            <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+        <img src="{{ url_for('static', filename='/template/img/hero-bg.jpg') }}" alt="" data-aos="fade-in" class="">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h2>Chris Milne</h2>
+            <p>
+                I am a
+                <span class="typed" data-typed-items="back-end, front-end, full-stack"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+                developer.
+            </p>
+        </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>About</h2>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4 justify-content-center">
+                <div class="col-lg-4">
+                    <img src="{{ url_for('static', filename='/template/img/profile-img.webp') }}" class="img-fluid about-image" alt="">
+                </div>
+                <div class="col-lg-8 content">
+                    <h2>Full-Stack Developer</h2>
+                    <p class="fst-italic py-3">
+                        My primary experience is in building tools in Python, using object-oriented design patterns,
+                        and connecting them to GUIs made in web technologies.
+                    </p>
+                    <div class="row" style="margin-bottom: 25px;">
+                        <div class="col d-flex justify-content-center">
+                            <a href="https://github.com/Lux-Ferre"><img alt="" src="https://github-readme-stats-luxferre.vercel.app/api?username=Lux-Ferre&hide=stars&show_icons=true&theme=shadow_blue&rank_icon=github&include_all_commits=true&custom_title=Lux-Ferres%20GitHub%20Stats" title="Lux-Ferre's GitHub stats" /></a>
+                        </div><!-- End Stats Item -->
+                        <div class="col d-flex justify-content-center">
+                            <a href="https://github.com/Lux-Ferre"><img alt="" src="https://github-readme-stats-luxferre.vercel.app/api/top-langs?username=Lux-Ferre&show_icons=true&theme=shadow_blue&layout=compact" title="Lux-Ferre's Language stats" /></a>
+                        </div><!-- End Stats Item -->
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div id="cv-button" class="cv-pill d-flex align-items-center justify-content-center depressed-effect"><span class="cv-link">My CV</span><i class="bi bi-cloud-arrow-down h2"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Technologies Section -->
+    <section id="tech" class="skills section light-background">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Technology and Languages</h2>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4 d-flex justify-content-around tech-container">
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="AWS"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/amazonwebservices/black" />AWS</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Android"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/android/black" />Android</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Apache"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/apache/black" />Apache</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Axios"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/axios/black" />Axios</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Bootstrap"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/bootstrap/black" />Bootstrap</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Docker"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/docker/black" />Docker</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="FastAPI"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/fastapi/black" />FastAPI</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Flask"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/flask/black" />Flask</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Github"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/github/black" />Github</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Github_Actions"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/githubactions/black" />Github Actions</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Go"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/go/black" />Go</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Greasyfork"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/greasyfork/black" />Greasyfork</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="JavaScript"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/javascript/black" />JavaScript</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="jQuery"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/jquery/black" />jQuery</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Kotlin"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/kotlin/black" />Kotlin</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Linux"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/linux/black" />Linux</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="MySQL"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/mysql/black" />MySQL</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="OCI"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/oracle/black" />OCI</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="PHP"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/php/black" />PHP</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Python"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/python/black" />Python</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="SQLite"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/sqlite/black" />SQLite</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Tampermonkey"><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/tampermonkey/black" />Tampermonkey</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech="Windows"><img height="32" width="32" alt="" src="{{ url_for("static", filename="/template/img/window.svg") }}" />Windows</div></div>
+            </div>
+
+        </div>
+
+    </section><!-- /Technologies Section -->
+
+    <!-- Tools Section -->
+    <section id="tools" class="skills section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Tools</h2>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4 d-flex justify-content-around">
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/androidstudio/black" />Android Studio</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/goland/black" />GoLand</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/jetbrains/black" />Fleet</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/krita/black" />Krita</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/pycharm/black" />PyCharm</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/dassaultsystemes/black" />SOLIDWORKS</div></div>
+                <div class="col d-flex justify-content-center"><div class="tech-pill d-flex justify-content-evenly align-items-center text-center" data-tech=""><img height="32" width="32" alt="" src="https://cdn.simpleicons.org/sublimetext/black" />Sublime</div></div>
+            </div>
+
+        </div>
+
+    </section><!-- /Tools Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section light-background">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Portfolio</h2>
+            <p>Here are a few of my projects, many more can be found on <a href="https://github.com/Lux-Ferre" target="_blank">my GitHub page.</a></p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            <div>
+                <div class="row gy-4 isotope-container d-flex justify-content-around" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app portfolio-tile">
+                        <a href="#inline-content-gazetteer" data-glightbox="height: auto;" class="glightbox">
+                            <div class="portfolio-content h-100">
+                                <img src="{{ url_for('static', filename='/template/img/portfolio/screenshots/gazetteer.webp') }}" class="w-100" alt="">
+                                <div class="portfolio-info">
+                                    <h4>Gazetteer</h4>
+                                    <i class="bi bi-zoom-in preview-link"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app portfolio-tile">
+                        <a href="#inline-content-company-directory" data-glightbox="height: auto;" class="glightbox portfolio-tile">
+                            <div class="portfolio-content h-100">
+                                <img src="{{ url_for('static', filename='/template/img/portfolio/screenshots/company_directory.webp') }}" class="w-100" alt="">
+                                <div class="portfolio-info">
+                                    <h4>Company Directory</h4>
+                                    <i class="bi bi-zoom-in preview-link"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div><!-- End Portfolio Item -->
+
+                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app portfolio-tile">
+                        <a href="#inline-content-luxshot" data-glightbox="height: auto;" class="glightbox portfolio-tile">
+                            <div class="portfolio-content h-100">
+                                <img src="{{ url_for('static', filename='/template/img/portfolio/screenshots/luxshot.webp') }}" class="w-100" alt="">
+                                <div class="portfolio-info">
+                                    <h4>Lux-Shot</h4>
+                                    <i class="bi bi-zoom-in preview-link"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div><!-- End Portfolio Item -->
+
+
+                </div><!-- End Portfolio Container -->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>Contact me with the form below, I'll get back to you as soon as possible.</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4">
+                <div class="col-lg-12">
+                    <form id="contact_submit" onSubmit="return false;" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                        {{ form.hidden_tag() }}
+                        <div class="row gy-4">
+
+                            <div class="col-md-6 form_inputs">
+                                <label for="name-field" class="pb-2">Your Name</label>
+                                {{ form.name(class_="form-control") }}
+                            </div>
+
+                            <div class="col-md-6 form_inputs">
+                                <label for="email-field" class="pb-2">Your Email</label>
+                                {{ form.email(class_="form-control") }}
+                            </div>
+
+                            <div class="col-md-12 form_inputs">
+                                <label for="subject-field" class="pb-2">Subject</label>
+                                {{ form.subject(class_="form-control") }}
+                            </div>
+
+                            <div class="col-md-12 form_inputs">
+                                <label for="message-field" class="pb-2">Message</label>
+                                {{ form.message(class_="form-control", rows="10") }}
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <div class="loading">Loading</div>
+                                <div id="email_errors" class="error-message"></div>
+                                <div id="email_confirm" class="sent-message">Your message has been sent. Thank you!</div>
+                                <button class="form_inputs" type="submit">Send Message</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div><!-- End Contact Form -->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Contact Section -->
+
+</main>
+
+<footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+        <div class="copyright text-center ">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong>
+                <span>All Rights Reserved</span></p>
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you've purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+
+</footer>
+
+<div id="inline-content-gazetteer" style="display: none;" class="text-center flex-column">
+    <h2>Gazetteer</h2>
+    <div>
+        <p>
+            <span>Built with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="Bootstrap" src="https://cdn.simpleicons.org/bootstrap/black" />
+                <img height="32" width="32" alt="" title="JavaScript" src="https://cdn.simpleicons.org/javascript/black" />
+                <img height="32" width="32" alt="" title="jQuery" src="https://cdn.simpleicons.org/jquery/black" />
+                <img height="32" width="32" alt="" title="PHP" src="https://cdn.simpleicons.org/php/black" />
+            </span>
+        </p>
+        <p>
+            <span>Deployed with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="Apache" src="https://cdn.simpleicons.org/apache/black" />
+                <img height="32" width="32" alt="" title="Docker" src="https://cdn.simpleicons.org/docker/black" />
+                <img height="32" width="32" alt="" title="Github" src="https://cdn.simpleicons.org/github/black" />
+                <img height="32" width="32" alt="" title="Linux" src="https://cdn.simpleicons.org/linux/black" />
+                <img height="32" width="32" alt="" title="OCI" src="https://cdn.simpleicons.org/oracle/black" />
+            </span>
+        </p>
+    </div>
+    <p>Gazetteer is an SPA which collates and provides quick access to geographic and demographic information for countries worldwide from multiple APIs.
+        It includes data on capital cities, languages, population, area, and ISO codes, along with a currency calculator, news, and weather updates.
+    </p>
+    <a class="inline-content-a" href="https://itcs.lbtechnology.info/gazetteer" target="_blank">Link</a>
+    <div style="border-bottom: 1px solid dimgrey; width: 100%; margin: 10px 0;"> </div>
+    <div class="d-flex justify-content-around">
+        <a class="gtrigger-close inline-close-btn" href="#">Close Box</a>
+    </div>
+</div> <!-- /Portfolio modal: -->
+
+<div id="inline-content-company-directory" style="display: none;" class="text-center flex-column">
+    <h2>Company Directory</h2>
+    <div>
+        <p>
+            <span>Built with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="Axios" src="https://cdn.simpleicons.org/axios/black" />
+                <img height="32" width="32" alt="" title="Bootstrap" src="https://cdn.simpleicons.org/bootstrap/black" />
+                <img height="32" width="32" alt="" title="JavaScript" src="https://cdn.simpleicons.org/javascript/black" />
+                <img height="32" width="32" alt="" title="PHP" src="https://cdn.simpleicons.org/php/black" />
+            </span>
+        </p>
+        <p>
+            <span>Deployed with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="Apache" src="https://cdn.simpleicons.org/apache/black" />
+                <img height="32" width="32" alt="" title="Docker" src="https://cdn.simpleicons.org/docker/black" />
+                <img height="32" width="32" alt="" title="Github" src="https://cdn.simpleicons.org/github/black" />
+                <img height="32" width="32" alt="" title="Linux" src="https://cdn.simpleicons.org/linux/black" />
+                <img height="32" width="32" alt="" title="MySQL" src="https://cdn.simpleicons.org/mysql/black" />
+                <img height="32" width="32" alt="" title="OCI" src="https://cdn.simpleicons.org/oracle/black" />
+            </span>
+        </p>
+    </div>
+    <p>Company Directory is an SPA for performing CRUD operations on an employee database. For demonstration purposes, it has been instantiated with mock data.</p>
+    <a class="inline-content-a" href="https://itcs.lbtechnology.info/companydirectory" target="_blank">Link</a>
+    <div style="border-bottom: 1px solid dimgrey; width: 100%; margin: 10px 0;"> </div>
+    <div class="d-flex justify-content-around">
+        <a class="gtrigger-close inline-close-btn" href="#">Close Box</a>
+    </div>
+</div> <!-- /Portfolio modal: -->
+
+<div id="inline-content-luxshot" style="display: none;" class="text-center flex-column">
+    <h2>Lux-Shot</h2>
+    <div>
+        <p>
+            <span>Built with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="Bootstrap" src="https://cdn.simpleicons.org/bootstrap/black" />
+                <img height="32" width="32" alt="" title="Flask" src="https://cdn.simpleicons.org/flask/black" />
+                <img height="32" width="32" alt="" title="Go" src="https://cdn.simpleicons.org/go/black" />
+                <img height="32" width="32" alt="" title="JavaScript" src="https://cdn.simpleicons.org/javascript/black" />
+                <img height="32" width="32" alt="" title="jQuery" src="https://cdn.simpleicons.org/jquery/black" />
+                <img height="32" width="32" alt="" title="Kotlin" src="https://cdn.simpleicons.org/kotlin/black" />
+                <img height="32" width="32" alt="" title="Python" src="https://cdn.simpleicons.org/python/black" />
+            </span>
+        </p>
+        <p>
+            <span>Deployed with: </span>
+            <span>
+                <img height="32" width="32" alt="" title="AWS" src="https://cdn.simpleicons.org/amazonwebservices/black" />
+                <img height="32" width="32" alt="" title="Android" src="https://cdn.simpleicons.org/android/black" />
+                <img height="32" width="32" alt="" title="Github" src="https://cdn.simpleicons.org/github/black" />
+                <img height="32" width="32" alt="" title="Linux" src="https://cdn.simpleicons.org/linux/black" />
+                <img height="32" width="32" alt="" title="SQLite" src="https://cdn.simpleicons.org/sqlite/black" />
+                <img height="32" width="32" alt="" title="Windows" src="{{ url_for("static", filename="/template/img/window.svg") }}" />
+            </span>
+        </p>
+    </div>
+    <p>
+        Lux-Shot is an image server made to replaces unreliable services like Lightshot and Gyazo.
+        The server is Flask based providing a minimal UI with username/password authentication.
+        Images are uploaded to an API endpoint using an API key for authentication.
+        There are three client apps: Android, Python, and Go. The Python client has been tested on Windows only.
+        The Go client has been compiled and tested on both Windows and Linux.
+    </p>
+    <a class="inline-content-a" href="https://img.luxferre.dev">Link</a>
+    <div style="border-bottom: 1px solid dimgrey; width: 100%; margin: 10px 0;"> </div>
+    <div class="d-flex justify-content-around">
+        <a class="gtrigger-close inline-close-btn" href="#">Close Box</a>
+    </div>
+</div> <!-- /Portfolio modal: -->
+
+<div id="inline-content" style="display: none;" class="text-center flex-column">
+    <h2>Project Name</h2>
+    <div>
+        <img height="32" width="32" alt="" title="Apache" src="https://cdn.simpleicons.org/apache/black" />
+    </div>
+    <p>Project description</p>
+    <a class="inline-content-a" href="#">Link</a>
+    <div style="border-bottom: 1px solid dimgrey; width: 100%; margin: 10px 0;"> </div>
+    <div class="d-flex justify-content-around">
+        <a class="gtrigger-close inline-close-btn" href="#">Close Box</a>
+    </div>
+</div> <!-- /Portfolio modal: -->
+
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="{{ url_for('static', filename='/template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/typed.js/typed.umd.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/waypoints/noframework.waypoints.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/template/vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://kit.fontawesome.com/9e06056b3d.js" crossorigin="anonymous"></script>
+
+<!-- Main JS File -->
+<script src="{{ url_for('static', filename='/template/js/main.js') }}"></script>
+
+</body>
+
+</html>
