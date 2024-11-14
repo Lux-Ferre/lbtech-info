@@ -3,7 +3,7 @@ import requests
 
 from datetime import datetime
 
-from flask import jsonify, request
+from flask import jsonify, request, abort, send_from_directory
 from app import app
 
 
@@ -352,3 +352,12 @@ def get_iso_from_coords():
     }
 
     return jsonify(response_data), 200
+
+
+@app.route("/api/download_cv")
+def download_cv():
+    filename = "shared/chris_milne_cv_2024.pdf"
+    try:
+        return send_from_directory("static", filename, as_attachment=True)
+    except FileNotFoundError:
+        abort(404)

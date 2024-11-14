@@ -272,7 +272,7 @@
 		})
 	})
 	document.getElementById("cv-button").addEventListener("click", event => {
-		window.open("https://docs.google.com/document/d/12e6aa5q9zhTNC4Qdo6wgsSHzbDcienj6KY1-rqvQE6s", "_blank")
+		window.open("/api/download_cv", "_self")
 	})
 
 	window.addEventListener('load', navmenuScrollspy);
