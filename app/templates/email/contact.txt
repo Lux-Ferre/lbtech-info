@@ -1,4 +1,6 @@
-From: {{ contact }}
+From: {{ input_name }}
+@: {{ contact }}
+Subject: {{ input_subject }}
 Message:
 
 {{ message }}
