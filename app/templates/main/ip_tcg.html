@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG Collection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/luxgrid/luxgrid.min.css') }}">
+    <style>
+        #settings_container {
+            margin-bottom: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tab {
+            padding: 5px 10px 0;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .tab:hover {
+            opacity: 1;
+        }
+
+        .inactive_tab {
+            opacity: 0.5;
+            margin-bottom: 1px;
+        }
+
+        #legendary_tab {
+            background-color: white;
+            color: black;
+        }
+
+        #bar_tab {
+            background-color: #3d3d29;
+            color: white;
+        }
+
+        #breeding_tab {
+            background-color: #ffb31a;
+            color: black;
+        }
+
+        #fish_tab {
+            background-color: #3333cc;
+            color: white;
+        }
+
+        #gear_tab {
+            background-color: #800000;
+            color: white;
+        }
+
+        #gem_tab {
+            background-color: #990099;
+            color: white;
+        }
+
+        #leaf_tab {
+            background-color: #669900;
+            color: white;
+        }
+
+        #limited_tab {
+            background-color: #ffffe6;
+            color: black;
+        }
+
+        #monster_tab {
+            background-color: #000000;
+            color: white;
+        }
+
+        #ore_tab {
+            background-color: #734d26;
+            color: white;
+        }
+
+        #seed_tab {
+            background-color: #1a3300;
+            color: white;
+        }
+
+        #wood_tab {
+            background-color: #663300;
+            color: white;
+        }
+
+        .card_inner {
+            text-align: center;
+            margin: 5px 18px;
+            border: 2px solid black;
+            background-color: #FEFEFE;
+            box-shadow: 1px 1px 5px;
+        }
+
+        .card {
+            font-size: x-small;
+            width: clamp(7vw, 130px, 20vw);
+            display: inline-block;
+            border-radius: 10pt;
+            box-shadow: 1px 1px 5px;
+            margin: 5px;
+            color: black;
+            padding: 2px;
+            position: relative;
+            border-width: 10px;
+            border-style: solid;
+        }
+
+        .card_title {
+            font-weight: bold;
+            padding: 0;
+            white-space: nowrap;
+            text-overflow: clip;
+            overflow: hidden;
+        }
+
+        .holo {
+            background-image: url('https://cdn.idle-pixel.com/images/holo.gif');
+            background-size: cover;
+        }
+
+        .holo_tag {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+        }
+
+        .unfound {
+            filter: grayscale(80%);
+            pointer-events: none;
+        }
+
+        .dupe_count {
+            max-width: 19%;
+            font-weight: bold;
+        }
+
+        .card_legendary {
+            border-color: #ffffff;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 154, 0, 1) 10%, rgba(208, 222, 33, 1) 20%, rgba(79, 220, 74, 1) 30%, rgba(63, 218, 216, 1) 40%, rgba(47, 201, 226, 1) 50%, rgba(28, 127, 238, 1) 60%, rgba(95, 21, 242, 1) 70%, rgba(186, 12, 248, 1) 80%, rgba(251, 7, 217, 1) 90%, rgba(255, 0, 0, 1) 100%);
+        }
+
+        .card_bar {
+            border-color: #3d3d29;
+            background: linear-gradient(rgb(184, 184, 148), rgb(153, 153, 102));
+        }
+
+        .card_breeding {
+            border-color: #ffb31a;
+            background: linear-gradient(#996600, #805500);
+        }
+
+        .card_fish {
+            border-color: #3333cc;
+            background: linear-gradient(#5c5cd6, #8585e0);
+        }
+
+        .card_gear {
+            border-color: #800000;
+            background: linear-gradient(#ff3333, #ff6666);
+        }
+
+        .card_gem {
+            border-color: #990099;
+            background: linear-gradient(#ff99ff, #ff33ff);
+        }
+
+        .card_leaf {
+            border-color: #669900;
+            background: linear-gradient(#33ff77, #66ff99);
+        }
+
+        .card_limited {
+            border-color: #ffffe6;
+            background: linear-gradient( 90deg, #e6e600 0%, #ffff33 10%, #808000 20%, #ffff80 30%, #999900 40%, #ffffb3 50%, #ffff1a 60%, #999900 70%, #ffff4d 80%, #4d4d00 90%, #999900 100% );
+
+        }
+
+        .card_monster {
+            border-color: #000000;
+            background: linear-gradient(#737373, #8c8c8c);
+        }
+
+        .card_ore {
+            border-color: #734d26;
+            background: linear-gradient(rgb(184, 184, 148), rgb(153, 153, 102));
+        }
+
+        .card_seed {
+            border-color: #1a3300;
+            background: linear-gradient(#428000, #5cb300);
+        }
+
+        .card_wood {
+            border-color: #663300;
+            background: linear-gradient(#ff8c1a, #ffa64d);
+        }
+    </style>
+</head>
+<body data-theme="dark">
+<header>
+    <div class="col text-center">
+        <h1>TCG Collection - {{ username }}</h1>
+    </div>
+</header>
+<main>
+    <section id="settings_container" class="container hidden">
+        This is a settings area
+    </section>
+    <section id="main_container" class="">
+        <div class="row" style="margin-bottom:-1px;">
+            <div id="legendary_tab" class="tab text-center col" data-target-panel="legendary">Legendary
+            </div>
+            <div id="bar_tab" class="tab text-center col inactive_tab" data-target-panel="bar">Bar</div>
+            <div id="breeding_tab" class="tab text-center col inactive_tab" data-target-panel="breeding">Breeding</div>
+            <div id="fish_tab" class="tab text-center col inactive_tab" data-target-panel="fish">Fish</div>
+            <div id="gear_tab" class="tab text-center col inactive_tab" data-target-panel="gear">Gear</div>
+            <div id="gem_tab" class="tab text-center col inactive_tab" data-target-panel="gem">Gem</div>
+            <div id="leaf_tab" class="tab text-center col inactive_tab" data-target-panel="leaf">Leaf</div>
+            <div id="limited_tab" class="tab text-center col inactive_tab" data-target-panel="limited">Limited</div>
+            <div id="monster_tab" class="tab text-center col inactive_tab" data-target-panel="monster">Monster</div>
+            <div id="ore_tab" class="tab text-center col inactive_tab" data-target-panel="ore">Ore</div>
+            <div id="seed_tab" class="tab text-center col inactive_tab" data-target-panel="seed">Seed</div>
+            <div id="wood_tab" class="tab text-center col inactive_tab" data-target-panel="wood">Wood</div>
+        </div>
+        <div class="container" id="legendary_panel"></div>
+        <div class="container hidden" id="bar_panel"></div>
+        <div class="container hidden" id="breeding_panel"></div>
+        <div class="container hidden" id="fish_panel"></div>
+        <div class="container hidden" id="gear_panel"></div>
+        <div class="container hidden" id="gem_panel"></div>
+        <div class="container hidden" id="leaf_panel"></div>
+        <div class="container hidden" id="limited_panel"></div>
+        <div class="container hidden" id="monster_panel"></div>
+        <div class="container hidden" id="ore_panel"></div>
+        <div class="container hidden" id="seed_panel"></div>
+        <div class="container hidden" id="wood_panel"></div>
+    </section>
+</main>
+<template id="card_template">
+    <div class="card unfound">
+        <div class="row">
+            <div class="col text-left card_title"></div>
+            <div class="col text-right dupe_count">00</div>
+        </div>
+        <div class="card_inner">
+            <img alt="" width=50 height=50 src="">
+        </div>
+        <span class="holo_tag hidden">[H]</span>
+    </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	window.addEventListener('load', function () {
+		window.tcg = new TCG
+        window.tcg.get_all_cards()
+	})
+
+	document.addEventListener("click", function (e) {
+		if (e.target) {
+			let node;
+			if (e.target.dataset.targetPanel) {
+				node = e.target;
+			}
+			if (node) {
+				window.tcg.changePanel(node.dataset.targetPanel);
+			}
+		}
+	})
+
+	class TCG {
+		constructor() {
+			this.panels = {
+				legendary: {
+					tab: document.getElementById("legendary_tab"),
+					panel: document.getElementById("legendary_panel")
+				},
+				bar: {
+					tab: document.getElementById("bar_tab"),
+					panel: document.getElementById("bar_panel")
+				},
+				breeding: {
+					tab: document.getElementById("breeding_tab"),
+					panel: document.getElementById("breeding_panel")
+				},
+				fish: {
+					tab: document.getElementById("fish_tab"),
+					panel: document.getElementById("fish_panel")
+				},
+				gear: {
+					tab: document.getElementById("gear_tab"),
+					panel: document.getElementById("gear_panel")
+				},
+				gem: {
+					tab: document.getElementById("gem_tab"),
+					panel: document.getElementById("gem_panel")
+				},
+				leaf: {
+					tab: document.getElementById("leaf_tab"),
+					panel: document.getElementById("leaf_panel")
+				},
+				limited: {
+					tab: document.getElementById("limited_tab"),
+					panel: document.getElementById("limited_panel")
+				},
+				monster: {
+					tab: document.getElementById("monster_tab"),
+					panel: document.getElementById("monster_panel")
+				},
+				ore: {
+					tab: document.getElementById("ore_tab"),
+					panel: document.getElementById("ore_panel")
+				},
+				seed: {
+					tab: document.getElementById("seed_tab"),
+					panel: document.getElementById("seed_panel")
+				},
+				wood: {
+					tab: document.getElementById("wood_tab"),
+					panel: document.getElementById("wood_panel")
+				}
+			}
+		}
+
+		changePanel(panelName) {
+			for (const [ident, panel] of Object.entries(this.panels)) {
+				if (ident === panelName) {
+					panel.panel.classList.remove("hidden")
+					panel.tab.classList.remove("inactive_tab")
+				} else {
+					panel.panel.classList.add("hidden")
+					panel.tab.classList.add("inactive_tab")
+				}
+			}
+		}
+
+		get_all_cards(){
+			axios.get(`../api/get_all_tcg`)
+		    .then(response => {
+				const data = response.data
+                for (const [key, value] of Object.entries(data)) {
+					const clone = document.getElementById("card_template").content.cloneNode(true)
+                    const cat = value.description_title.toLowerCase()
+                    clone.querySelector(".card").classList.add(`card_${cat}`)
+                    clone.querySelector(".card_title").textContent = value.label
+                    clone.querySelector("img").src = `https://cdn.idle-pixel.com/images/${value.image}`
+
+                    const holo_clone = clone.cloneNode(true)
+                    holo_clone.querySelector(".card_inner").classList.add(`holo`)
+                    holo_clone.querySelector(".holo_tag").classList.remove(`hidden`)
+
+                    clone.querySelector(".card").id = key
+                    holo_clone.querySelector(".card").id = `${key}_h`
+
+                    document.getElementById(`${cat}_panel`).appendChild(clone)
+                    document.getElementById(`${cat}_panel`).appendChild(holo_clone)
+                }
+				window.tcg.get_user_cards()
+		    })
+		    .catch(error => {
+		        console.log(error)
+		    })
+        }
+
+		get_user_cards() {
+			const urlParams = new URLSearchParams(window.location.search);
+            const user = urlParams.get('user');
+
+            axios.get(`../api/get_user_tcg?user=${user}`)
+		    .then(response => {
+				for (const [card, count] of Object.entries(response.data)) {
+					const card_element = document.getElementById(card)
+                    card_element.classList.remove("unfound")
+                    card_element.querySelector(".dupe_count").textContent = `${count}`
+                }
+		    })
+		    .catch(error => {
+		        console.log(error)
+		    })
+		}
+	}
+</script>
+</body>
+</html>

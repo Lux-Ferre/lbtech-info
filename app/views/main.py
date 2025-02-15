@@ -45,3 +45,9 @@ def contact():
 @app.route("/contact/success")
 def contact_success():
     return render_template("main/contact_success.html")
+
+
+@app.route("/idlepixel/tcg")
+def ip_tcg():
+    username = request.args.get('user', None)
+    return render_template("main/ip_tcg.html", username=username)

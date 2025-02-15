@@ -361,3 +361,26 @@ def download_cv():
         return send_from_directory("static", filename, as_attachment=True)
     except FileNotFoundError:
         abort(404)
+
+
+@app.route("/api/get_all_tcg")
+def get_all_tcg():
+    r = requests.get("https://idle-pixel.com/get-tcg-info/")
+    data = r.json()
+    return jsonify(data), 200
+
+
+@app.route("/api/get_user_tcg")
+def get_user_tcg():
+    user = request.args.get("user")
+    r = requests.get(f"https://idle-pixel.com/tcg/get/?username={user}")
+
+    card_count = {}
+    card_list = r.json()["result"]
+    for card in card_list:
+        card_id = f"{card['card']}{'_h' if card['holo'] else ''}"
+        if card_id in card_count:
+            card_count[card_id] += 1
+        else:
+            card_count[card_id] = 1
+    return jsonify(card_count), 200
