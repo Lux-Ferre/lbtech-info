@@ -22,6 +22,7 @@
 
         .tab:hover {
             opacity: 1;
+            text-decoration: underline;
         }
 
         .inactive_tab {
@@ -131,9 +132,11 @@
         }
 
         .unfound {
-            filter: grayscale(80%);
+            opacity: 0.25;
             pointer-events: none;
         }
+
+        .found{}
 
         .dupe_count {
             max-width: 19%;
@@ -209,8 +212,17 @@
     </div>
 </header>
 <main>
-    <section id="settings_container" class="container hidden">
-        This is a settings area
+    <section id="settings_container" class="container">
+        <div class="row">
+            <div class="col text-center">
+                <input type="checkbox" id="show_found" checked>
+                <label for="show_found">Show found</label>
+            </div>
+            <div class="col text-center">
+                <input type="checkbox" id="show_unfound" checked>
+                <label for="show_unfound">Show unfound</label>
+            </div>
+        </div>
     </section>
     <section id="main_container" class="">
         <div class="row" style="margin-bottom:-1px;">
@@ -261,17 +273,55 @@
         window.tcg.get_all_cards()
 	})
 
-	document.addEventListener("click", function (e) {
-		if (e.target) {
-			let node;
-			if (e.target.dataset.targetPanel) {
-				node = e.target;
+    document.getElementById('show_found').addEventListener('change', function () {
+		if (this.checked) {
+			const rules = document.styleSheets[1].cssRules
+            for (let i = 0; i < rules.length; i++) {
+				const rule = rules[i];
+				if (rule.selectorText === ".found") {
+					rule.style.setProperty("display", "inline-block");
+					break;
+				}
 			}
-			if (node) {
-				window.tcg.changePanel(node.dataset.targetPanel);
+		} else {
+			const rules = document.styleSheets[1].cssRules
+			for (let i = 0; i < rules.length; i++) {
+				const rule = rules[i];
+				if (rule.selectorText === ".found") {
+					rule.style.setProperty("display", "none");
+					break;
+				}
 			}
 		}
 	})
+
+    document.getElementById('show_unfound').addEventListener('change', function () {
+		if (this.checked) {
+			const rules = document.styleSheets[1].cssRules
+            for (let i = 0; i < rules.length; i++) {
+				const rule = rules[i];
+				if (rule.selectorText === ".unfound") {
+					rule.style.setProperty("display", "inline-block");
+					break;
+				}
+			}
+		} else {
+			const rules = document.styleSheets[1].cssRules
+			for (let i = 0; i < rules.length; i++) {
+				const rule = rules[i];
+				if (rule.selectorText === ".unfound") {
+					rule.style.setProperty("display", "none");
+					break;
+				}
+			}
+		}
+	})
+
+    document.querySelectorAll(".tab").forEach(function (tab) {
+		tab.addEventListener('click', function (e) {
+			window.tcg.changePanel(e.target.dataset.targetPanel)
+		})
+    })
 
 	class TCG {
 		constructor() {
@@ -376,6 +426,8 @@
 				for (const [card, count] of Object.entries(response.data)) {
 					const card_element = document.getElementById(card)
                     card_element.classList.remove("unfound")
+                    card_element.classList.add("found")
+
                     card_element.querySelector(".dupe_count").textContent = `${count}`
                 }
 		    })
