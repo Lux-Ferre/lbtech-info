@@ -15,3 +15,8 @@ def morrisons_recs():
 @app.route("/morrisons/barrs")
 def morrisons_barrs():
     return render_template("morrisons/barrs_order.html")
+
+
+@app.route("/morrisons/mup")
+def morrisons_mup():
+    return render_template("morrisons/mup_calc.html")

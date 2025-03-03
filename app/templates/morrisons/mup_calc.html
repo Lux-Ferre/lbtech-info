@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUP Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/luxgrid/luxgrid.min.css') }}">
+    <style>
+        #main_container {
+            width: 300px;
+            border: 1px outset white;
+            border-radius: 5%;
+            filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.5));
+        }
+
+        #main_container input{
+            width: 100%;
+            padding-top: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .floating_label{
+            position: absolute;
+            top:1px;
+            left:2px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body data-theme="dark" class="info-dark">
+<header>
+    <div class="col text-center">
+        <h1>MUP Calculator</h1>
+    </div>
+</header>
+<main class="row justify-content-center">
+    <section id="main_container" class="dark">
+        <div class="row" style="margin-top:20px;">
+            <div class="col text-center">
+                <div style="position:relative;">
+                    <input type="text" id="abv_input" placeholder="4.5%">
+                    <span class="floating_label">ABV%</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <div style="position:relative;">
+                    <input type="number" id="vol_input" placeholder="440">
+                    <span class="floating_label">Volume (ml)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <div style="position:relative;">
+                    <input type="number" id="qty_input" placeholder="4">
+                    <span class="floating_label">Quantity</span>
+                </div>
+            </div>
+        </div>
+        <div class="w-100" style="border:1px solid gray;"> </div>
+        <div class="row" style="margin-top:5px; margin-bottom:20px;">
+            <div class="col text-center">
+                <input type="text" id="mup_output" disabled style="padding-top:0;font-size:2rem;" value="???">
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    document.getElementById("main_container").querySelectorAll("input").forEach(input_element => {
+		input_element.addEventListener("input", function() {
+            update_mup()
+        })
+    })
+
+    function update_mup(){
+		const abv = parseFloat(document.getElementById("abv_input").value) || 0
+        const vol = parseInt(document.getElementById("vol_input").value) || 0
+        const qty = parseInt(document.getElementById("qty_input").value) || 0
+
+        const mup = (Math.ceil(((abv * vol) / 1000) * qty * 65)) / 100
+
+        let output
+        if(mup===0){
+			output = "???"
+        } else {
+			output = `£${mup}`
+        }
+
+        document.getElementById("mup_output").value = output
+    }
+</script>
+</body>
+</html>

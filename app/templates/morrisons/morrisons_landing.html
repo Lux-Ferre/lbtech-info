@@ -3,7 +3,7 @@
 {% block head %}
     {{ super() }}
     <link href="{{ url_for('static', filename='assets/morrisons/landing/landing.css') }}" rel="stylesheet">
-    <meta id="flask_data" data-recs="{{ url_for('morrisons_recs') }}" data-barrs="{{ url_for('morrisons_barrs') }}"/>
+    <meta id="flask_data" data-recs="{{ url_for('morrisons_recs') }}" data-barrs="{{ url_for('morrisons_barrs') }}" data-mup="{{ url_for('morrisons_mup') }}"/>
 {% endblock %}
 
 {% block title %}Morrison's: Landing Page{% endblock %}
@@ -44,6 +44,14 @@
                     <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/guide.png') }}">
 					<div class="card-body">
 						<h4 class="card-title">Guide Book</h4>
+					</div>
+				</div>
+			</div>
+            <div class="col d-flex justify-content-center">
+				<div id="mup_card" class="card bg-info-subtle border-info text-center">
+                    <img class="card-img-top d-block" src="{{ url_for('static', filename='assets/morrisons/landing/mup.jpg') }}">
+					<div class="card-body">
+						<h4 class="card-title">MUP Calc</h4>
 					</div>
 				</div>
 			</div>

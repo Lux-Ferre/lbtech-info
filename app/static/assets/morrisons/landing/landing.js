@@ -16,6 +16,10 @@ $("#barrs_order_card").on("click", e =>{
     window.location.href = $("#flask_data").data("barrs")
 })
 
+$("#mup_card").on("click", e =>{
+    window.location.href = $("#flask_data").data("mup")
+})
+
 $("#guide_card").on("click", e =>{
     $("#password_modal").modal("show")
 })
