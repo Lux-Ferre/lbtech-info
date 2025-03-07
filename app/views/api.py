@@ -1,5 +1,7 @@
 import json
 import requests
+import time
+import os
 
 from datetime import datetime
 
@@ -384,3 +386,46 @@ def get_user_tcg():
         else:
             card_count[card_id] = 1
     return jsonify(card_count), 200
+
+
+@app.route("/api/sics")
+def get_sics():
+    json_path = os.path.join(app.static_folder, "projects/companies_house/sics.json")
+    with open(json_path, mode="r", encoding="utf-8") as file:
+        data = json.load(file)
+    return jsonify(data), 200
+
+
+@app.route("/api/chouse")
+def get_companies_house():
+    sic = request.args.get("sic", None)
+    postcodes = request.args.get("postcodes", None).split(",")
+
+    if sic is None or sic == "":
+        return jsonify({"message": "Please provide SIC"}), 400
+
+    if postcodes is None or postcodes == [""]:
+        return jsonify({"message": "Please provide postcodes"}), 400
+
+    apikey = app.config["COMPANIES_HOUSE_API_KEY"]
+
+    root_endpoint = "https://api.company-information.service.gov.uk/"
+    full_endpoint = root_endpoint + "advanced-search/companies?"
+
+    data = []
+
+    for postcode in postcodes:
+        query = f"company_status=active&location={postcode}&size=500&sic_codes={sic}"
+        full_query = full_endpoint + query
+
+        headers = {'Authorization': apikey}
+
+        api_response = requests.get(full_query, headers=headers)
+        api_result = json.loads(api_response.content)["items"]
+
+        for company in api_result:
+            data.append(company["company_name"])
+
+        time.sleep(0.1)
+
+    return jsonify(data), 200

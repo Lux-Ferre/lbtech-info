@@ -17,3 +17,4 @@ class Config:
     MEDIASTACK_KEY = os.environ.get('MEDIASTACK_KEY')
     WEATHER_API_KEY = os.environ.get('WEATHER_API_KEY')
     SPOTIFY_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
+    COMPANIES_HOUSE_API_KEY = os.environ.get('COMPANIES_HOUSE_API_KEY')

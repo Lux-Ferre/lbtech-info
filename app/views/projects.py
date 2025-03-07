@@ -49,3 +49,8 @@ def sqmusic_get_id():
 @app.route("/projects/external/two")
 def two_people():
     return render_template("projects/external/two.html")
+
+
+@app.route("/projects/chouse")
+def companies_house():
+    return render_template("projects/companies_house.html")
