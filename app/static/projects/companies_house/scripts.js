@@ -50,7 +50,12 @@ function get_from_api(){
 			is_clicked = false;
 		})
 		.catch(error => {
-			document.getElementById(`output`).value = error.response.data.message;
+			const message = error.response.data.message
+			if(message){
+				document.getElementById(`output`).value = message
+			} else {
+				document.getElementById(`output`).value = "There was a problem. Are all outcodes valid?"
+			}
 			document.getElementById("search_button").querySelector("span").classList.remove("hidden")
 			document.getElementById("search_button").querySelector(".throbber").classList.add("hidden")
 			is_clicked = false;
