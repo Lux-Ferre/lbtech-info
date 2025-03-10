@@ -13,6 +13,8 @@ function add_pill(text) {
 	const clone = document.getElementById("pill_template").content.cloneNode(true)
 	const pill = clone.querySelector(".pill")
 
+	pill.dataset.outcode = text
+
 	clone.querySelector(".pill_text").innerText = text
 
 	clone.querySelector(".remove").addEventListener("click", () => {
@@ -25,6 +27,7 @@ function add_pill(text) {
 	postcode_input.value = "";
 
 	stored_postcodes.add(text)
+	check_outcode(text)
 }
 
 function get_from_api(){
@@ -67,6 +70,17 @@ function get_sics(){
 		})
 		.catch(error => {
 			console.log(error)
+		})
+}
+
+function check_outcode(outcode){
+	axios.get(`https://api.postcodes.io/outcodes/${outcode}`)
+		.then(response => {})
+		.catch(error => {
+			const outcode = error.request.responseURL.split("/").pop()
+			const pill = document.getElementById("postcode_input_container").querySelector(`.pill[data-outcode=${outcode}]`)
+			pill.classList.add("danger")
+			pill.classList.remove("success")
 		})
 }
 
