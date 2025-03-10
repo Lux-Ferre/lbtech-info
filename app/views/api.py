@@ -421,11 +421,18 @@ def get_companies_house():
         headers = {'Authorization': apikey}
 
         api_response = requests.get(full_query, headers=headers)
-        api_result = json.loads(api_response.content)["items"]
+
+        try:
+            api_result = json.loads(api_response.content)["items"]
+        except json.decoder.JSONDecodeError:
+            api_result = []
 
         for company in api_result:
             data.append(company["company_name"])
 
         time.sleep(0.1)
+
+    if len(data) == 0:
+        data.append("No companies found matching the criteria. :c")
 
     return jsonify(data), 200
