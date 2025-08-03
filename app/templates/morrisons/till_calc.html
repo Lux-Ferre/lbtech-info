@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Till Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/luxgrid/luxgrid.min.css') }}">
+    <style>
+        #main_container {
+            width: 300px;
+            border: 1px outset white;
+            border-radius: 5%;
+            filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.5));
+        }
+
+        #main_container input{
+            width: 100%;
+            height: 1rem;
+        }
+    </style>
+</head>
+<body data-theme="dark" class="info-dark">
+<header>
+    <div class="col text-center">
+        <h1>Till Calculator</h1>
+    </div>
+</header>
+<main class="row justify-content-center">
+    <section id="main_container" class="dark">
+
+    </section>
+</main>
+<template id="row_template">
+    <div class="row" style="height:1.2rem; border-bottom:1px dotted darkgray;">
+        <div class="col">
+            <label class="denomination"></label>
+        </div>
+        <div class="col">
+            <input type="text" inputmode="numeric" class="qty" placeholder="0">
+        </div>
+        <div class="col">
+            <label data-denom="" class="value">£0.00</label>
+        </div>
+    </div>
+</template>
+<script>
+    const template = document.getElementById('row_template')
+    const container = document.getElementById('main_container')
+
+    const gbp_denominations = {
+		"£50": 50.0,
+		"£20": 20.0,
+		"£10": 10.0,
+		"£5": 5.0,
+		"£2": 2.0,
+		"£1": 1.0,
+		"50p": 0.5,
+		"20p": 0.2,
+		"10p": 0.1,
+		"5p": 0.05,
+		"2p": 0.02,
+		"1p": 0.01
+	}
+
+	for (const [label, value] of Object.entries(gbp_denominations)) {
+        let clone = template.content.cloneNode(true)
+        clone.querySelector('.denomination').textContent = label
+        clone.querySelector('.value').dataset.denom = value.toString()
+        container.appendChild(clone)
+    }
+
+	let clone = template.content.cloneNode(true)
+    clone.querySelector('.denomination').textContent = "Total"
+    clone.querySelector("input").parentElement.innerHTML = ""
+    clone.querySelector('.value').classList.add('total')
+    clone.querySelector('.value').setAttribute("id", "total")
+    clone.querySelector('.value').classList.remove('value')
+
+    container.appendChild(clone)
+
+    document.getElementById("main_container").querySelectorAll("input").forEach(input_element => {
+		input_element.addEventListener("input", function() {
+			const value_element = input_element.parentElement.parentElement.querySelector(".value")
+            const denom = parseFloat(value_element.dataset.denom)
+            const raw_input = input_element.value
+            const input_value = raw_input ? parseInt(raw_input) : 0
+
+            const total_value = input_value * denom
+            value_element.textContent = `£${total_value.toFixed(2)}`
+
+            const total = Array.from(document.getElementById("main_container").querySelectorAll(".value"))
+                .reduce((sum, el) => sum + parseFloat(el.textContent.slice(1)) || 0, 0)
+
+            document.getElementById("total").textContent = `£${total.toFixed(2)}`
+        })
+    })
+
+    function update_mup(){
+		const abv = parseFloat(document.getElementById("abv_input").value) || 0
+        const vol = parseInt(document.getElementById("vol_input").value) || 0
+        const qty = parseInt(document.getElementById("qty_input").value) || 0
+
+        const mup = (Math.ceil(((abv * vol) / 1000) * qty * 65)) / 100
+
+        let output
+        if(mup===0){
+			output = "???"
+        } else {
+			output = `£${mup}`
+        }
+
+        document.getElementById("mup_output").value = output
+    }
+</script>
+</body>
+</html>

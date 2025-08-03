@@ -20,3 +20,8 @@ def morrisons_barrs():
 @app.route("/morrisons/mup")
 def morrisons_mup():
     return render_template("morrisons/mup_calc.html")
+
+
+@app.route("/morrisons/till")
+def morrisons_till():
+    return render_template("morrisons/till_calc.html")
